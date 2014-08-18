@@ -1,1 +1,5 @@
 _site
+.project
+.settings
+Gemfile
+Gemfile.lock
