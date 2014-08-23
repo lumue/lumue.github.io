@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>Lumue.github.io by lumue</title>
+
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+<script src="javascripts/scale.fix.js"></script>
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no">
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1 class="header">lumue</h1>
+      <p class="header">blog</p>
+
+
+
+      <ul>
+        <li><a class="buttons github" href="https://github.com/lumue">github/lumue</a></li>
+      </ul>
+
+    </header>
+    <section>
+      <h1 id="low-http-response-times-and-normalized-backend-load-using-asynchronous-request-processing">Low http response times and normalized backend load using asynchronous request processing</h1>
+
+<h2 id="overview">Overview</h2>
+
+<h3 id="why-is-it-important">Why is it important</h3>
+
+<p>Imagine what happens in your application if suddenly a lot of requests start coming in, which demand synchronous transaction execution against a database. The webserver will start to spawn more threads. Each of these threads has to acquire a database connection. This will not only drain your http-threadpool, but also your applications connection pool. after a while, most threads will be waiting for a database connection. which in turn leads to the webserver spawning more and more threads. eventually your application becomes unresponsive. </p>
+
+<p>So http-threads are a resource you do not want to hog. this is even more important if your application is accessible on the public internet.  </p>
+
+<p>it is also a good thing to decouple your backend workload from the http-request frequency. remember that every thread that executes a transaction against a database likely also occupies a db connection. </p>
+
+<h3 id="how-does-it-work-the-short-version">How does it work (the short version)</h3>
+
+<p>When invoking a service-method directly from a http-request-processing thread, it will be occupied until the transaction completes. To avoid this, the request is handed off to a message queue and delivered to a service-activator endpoint. </p>
+
+<p>this way, updates can be queued while your backend-threads and database eat them up at a steady load.</p>
+
+<p>if guaranteed delivery is needed, the message queue can be made persistent with a message store. a http ok response is sent only if the message has been added to the queue. </p>
+
+<h3 id="when-not-to-use-this">When (not) to use this</h3>
+
+<p>This pattern is useful if you have to handle a large amount of non trivial create or update requests to your backend in a short amount of time. Consider it especially if you have a public facing api or a spiky usage pattern.   </p>
+
+<p>Its not applicable if the clients requires a response containing processing results. In this case consider to redesign your endpoint api to allow for “fire and forget” style requests: </p>
+
+<p>Does your client really need to know if the backend transaction completed successfully, or is it enough to acknowledge the delivery? </p>
+
+<p>Is it possible to pull the backend for results later?     </p>
+
+<p>Obviously, this adds another level of complexity and also some overhead to your application. So only use it, if you need it. Fortunately, if you design your service api with this pattern in mind, its easy to add the implementation later.</p>
+
+<h2 id="an-example">An example</h2>
+
+<p>You have built an application which receives and processes orders from thousands of clients around the country. you even stress tested it with the expected workload of 500.000 orders a day and everything works fine.</p>
+
+<h3 id="there-is-always-a-little-detail-missing-from-the-spec">There is always a little detail missing from the spec!</h3>
+
+<p>but after it is deployed to production, complaints start coming in. apparently each order has to be sent several times until it is accepted and also the userinterface seems to become slow and unresponsive every night. So you check the logs and notice a lot of exceptions which look like this:</p>
+
+<p><code>
+</code></p>
+
+<p>turns out there is a little detail about that specified load which you haven’t been told: all the clients start sending their orders at the same time every night!</p>
+
+<h3 id="the-application">The Application</h3>
+
+<h4 id="the-domainmodel">The Domainmodel</h4>
+
+<p>Is a really simple one (after all it is an example application!). </p>
+
+<p><img src="/resources/2014-08-18-srap-domain-classDiagram.PNG" alt="domain model" /> </p>
+
+<p>But there is a small gotcha with serious implications on the processing of orders. As you can see, the product quantity on stock is a direct property of <code>Product</code>. Since the processing of an order involves the update of stock, the corresponding row in the product table has to be locked, which in turn requires the transaction isolation level to be serializable.</p>
+
+<h4 id="object-persistence">Object Persistence</h4>
+
+<p>The domain objects are persisted using JPA and hibernate. Mysql is used as a database. Nothing special here.</p>
+
+
+    </section>
+    <footer>
+      <p>
+        <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+        </small>
+      </p>
+    </footer>
+  </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+</body>
+</html>
