@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>Lumue.github.io by lumue</title>
+
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+<script src="javascripts/scale.fix.js"></script>
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no">
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1 class="header">lumue</h1>
+      <p class="header">blog</p>
+
+
+
+      <ul>
+        <li><a class="buttons github" href="https://github.com/lumue">github/lumue</a></li>
+      </ul>
+
+    </header>
+    <section>
+      <h1 id="lan-traffic-monitoring-with-dd-wrt">LAN Traffic monitoring with dd-wrt</h1>
+
+<h2 id="my-setup">My setup</h2>
+<p>i use an ancient wrt54 running dd-wrt to keep our home devices connected. it has no fancy gbit interfaces or super fast wlan, but aside from the occasional dhcpd crash, it is really a reliable little box. 
+i think i have used it for over 9 years now. first with external antennas to connect to the residential community wlan, later when i switched to a dsl land line, as my home router.</p>
+
+<p><img src="/assets/wrt54.jpg" alt="Linksys WRT-54G" /></p>
+
+<p>the firmware i am using is <a href="www.dd-wrt.com">dd-wrt</a>.<br />
+connected to its lan interfaces is a dsl router, my media center, PCs and network storage.<br />
+the wlan interface is used as an AP for mobile devices.</p>
+
+<h2 id="the-plan">The Plan!</h2>
+<p>whats missing is a tool that lets me “see” what is going on inside my home lan and wlan. who is talking to whom, which machine uses how much bandwidth, etc. <br />
+since the wrt is the only device which is connected to lan and wlan, this is where the capturing tool will run. 
+for analysis i plan to use ntop on another box.</p>
+
+<h2 id="how-to-do-it">How to do it</h2>
+
+<h3 id="setting-up-the-rflow-probe">Setting up the RFlow probe</h3>
+<p>The probing can activated in dd-wrt’s web console. The RFlow section is located under services and looks like this:</p>
+
+<p><img src="/assets/dd-wrt-admin-rflow-section.png" alt="RFlow configuration via dd-wrt web console" /></p>
+
+
+    </section>
+    <footer>
+      <p>
+        <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+        </small>
+      </p>
+    </footer>
+  </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+</body>
+</html>
