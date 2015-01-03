@@ -4,7 +4,6 @@ title :  Hello World! with KODI
 tags:
  - xbmc
  - python
- - pycharm
  - kodi
 ---
 
@@ -20,7 +19,7 @@ The addon language of choice in KODI world is python, and it brings its own inte
 
  * [KODI](http://kodi.tv) - A media center software which will act as the addons host. howto install KODI in your linux distro of choice is described [here](http://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux).
  
- * [Pycharm](https://www.jetbrains.com/pycharm/) - Jetbrains take at a python  IDE. Any other python editor will do, but the process to get code completion for xbmcs libraries described here is pycharm specific.
+ * A Texteditor or IDE. Popular ones for Python are [Pycharm](https://www.jetbrains.com/pycharm/), Jetbrains take at a Python IDE, or the Eclipse based [PyDev](http://pydev.org/).    
 
  * [xbmcstubs](http://kodi.wiki) - a set of python files which provide method stubs for the libraries included in KODI's python interpreter. 
  
