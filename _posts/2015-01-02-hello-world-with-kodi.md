@@ -1,6 +1,6 @@
 ---
 layout : layout
-title :  hello world with kodi
+title :  Hello World! with KODI
 tags:
  - xbmc
  - python
