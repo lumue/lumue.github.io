@@ -28,9 +28,7 @@ The addon language of choice in KODI world is python, and it brings its own inte
  * [HOW-TO:HelloWorld addon](http://kodi.wiki/view/HOW-TO:HelloWorld_addon) on [KODI wiki](http://kodi.wiki).  
  
  * [Audio/video add-on tutorial](http://kodi.wiki/view/Audio/video_add-on_tutorial#Hello.2C_World.21) on KODI wiki.  
- 
- * [Work in Progress - XBMCstubs re-worked (code auto-completion and quick help for Python IDEs)](http://forum.kodi.tv/showthread.php?tid=173780) on the [KODI forums](http://http://forum.kodi.tv/)
- 
+  
 ## How to do it
 
 ### Project structure
