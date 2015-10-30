@@ -4,9 +4,7 @@ title :  running ntopng on ubuntu 14.04
 tags:
  - linux
  - network
- - ntopng
  - monitoring
- - netflow
 ---
 
 #running ntopng on ubuntu 14.04

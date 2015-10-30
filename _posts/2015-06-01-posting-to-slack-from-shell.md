@@ -1,6 +1,8 @@
 ---
 layout : layout
 title : Posting to slack from shell
+tags:
+    - slack
 ---
 
 #Posting to slack from shell (using the webapi)

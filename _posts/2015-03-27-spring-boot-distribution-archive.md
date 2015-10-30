@@ -7,6 +7,7 @@ tags:
  - getdown
  - java
  - devops
+ - spring
 ---
 
 # Packaging a spring-boot application for distribution

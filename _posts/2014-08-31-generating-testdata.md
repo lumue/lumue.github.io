@@ -4,11 +4,7 @@ title :  Generating Testdata
 tags:
  - programming
  - java
- - benerator
  - testing
- - load testing
- - testdata
- - project automation
 ---
 
 #Generating Testdata

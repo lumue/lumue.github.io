@@ -1,6 +1,9 @@
 ---
 layout : layout
 title : posting svn commit notifications to slack
+tags :
+    - svn
+    - slack
 ---
 
 #Posting svn commit notifications to slack
