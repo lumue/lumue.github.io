@@ -46,10 +46,10 @@ We want our image to expose two volumes. one for database file(s), and one for t
 to create this image execute:
 
 {% highlight bash %}
-docker create -v /database -v /work --name appdata debian/jessie /bin/true
+docker create -v /databases -v /work --name appdata debian/jessie /bin/true
 {% endhighlight %}
 
-This creates an image based on debian jessie which exposes the volumes "/database" and "/work" with the name "appdata".
+This creates an image based on debian jessie which exposes the volumes "/databases" and "/work" with the name "appdata".
 
 
 ## Database container
@@ -65,3 +65,11 @@ For a production deployment we would map the exposed database volume to a path i
 {% highlight bash %}
 docker run -d --name firebird -v /data/firebird/databases:/databases jacobalberty/firebird:2.5-ss
 {% endhighlight %}
+
+But what we want to do is use our datacontainer "appdata" to store the database files. To tell docker about it we have to use the --volumes-from flag when starting the firebird image:
+
+{% highlight bash %}
+docker run -d --name firebird --volumes-from appdata jacobalberty/firebird:2.5-ss
+{% endhighlight %}
+
+
