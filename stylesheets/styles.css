@@ -256,12 +256,12 @@ a.name {
 	white-space: nowrap;
 }
 
-header ul {
+.button-list {
   list-style:none;
   padding:0;
 }
 
-header li {
+.button-list-item {
 	list-style-type: none;
   width:132px;
   height:15px;
@@ -297,7 +297,7 @@ header li:hover {
 
 a.buttons {
 	-webkit-font-smoothing: antialiased;
-	background: url(../images/arrow-down.png) no-repeat;
+    no-repeat;
 	font-weight: normal;
 	text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
 	padding: 2px 2px 2px 22px;
@@ -306,6 +306,10 @@ a.buttons {
 
 a.github {
 	background: url(../images/octocat-small.png) no-repeat 1px;
+}
+
+a.twitter {
+  background: url(../images/octocat-small.png) no-repeat 1px;
 }
 
 a.buttons:hover {
@@ -418,4 +422,15 @@ footer {
     font-size:12pt;
     color:#444;
   }
+}
+
+.tag-cloud {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+  font-size: 16px;
+}
+.tag-cloud-item {
+  display: inline-block;
+  margin: 0 12px 12px 0;
 }

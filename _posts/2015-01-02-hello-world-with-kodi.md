@@ -44,7 +44,6 @@ to be available to KODI it must be placed in ```$HOME/.kodi/addons``` and  conta
 
 
 #### addon.xml
-
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="io.github.lumue.xbmc.hello" name="Hello World" version="1.0.0" provider-name="lumue">
