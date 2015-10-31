@@ -42,17 +42,30 @@ The [Dockerfile](https://github.com/jacobalberty/firebird-docker/blob/master/2.5
 FROM debian:jessie
 {% endhighlight %}
 
-We want our image to expose two volumes. one for database file(s), and one for the work directory. It shall be named appdata, for it stores appdata!
-to create this image execute:
+We want our image to expose two volumes. one for database file(s), and one for the work directory.
+The Dockerfile below can be used to build this image.
+
+<script src="https://gist.github.com/lumue/6c88a753403b9fe0eaee.js"></script>
+
+It shall be named appdata, for it stores appdata!
+to build and run this image execute
 
 {% highlight bash %}
-docker create -v /databases -v /work --name appdata debian/jessie /bin/true
+docker build -t <your_repo>/appdata .
+docker -d --name appdata <your_repo>/appdata
 {% endhighlight %}
 
-This creates an image based on debian jessie which exposes the volumes "/databases" and "/work" with the name "appdata".
+check the result by running ``docker ps``. if all went well you should see output like this:
+
+{% highlight bash %}
+CONTAINER ID        IMAGE                      COMMAND             CREATED             STATUS              PORTS               NAMES
+55c6523c4307        18384fe4a822....e558e295   "/bin/bash"         21 minutes ago      Up 18 minutes                           appdata
+{% endhighlight %}
+
+which means our datacontainer is up and running.
 
 
-## Database container
+## Databaseserver
 
 We will use the firebird 2.5 superserver docker image from [jacobalberty/firebird](https://hub.docker.com/r/jacobalberty/firebird/).
 
@@ -72,4 +85,12 @@ But what we want to do is use our datacontainer "appdata" to store the database 
 docker run -d --name firebird --volumes-from appdata jacobalberty/firebird:2.5-ss
 {% endhighlight %}
 
+you can verify that the firebird container uses volumes from appdata by attaching to both containers and writing to the /databases directory.
+if everything is working as planned, you should see the same content in both containers.
+
+## Application and Applicationserver
+
+To setup the image for glassfish4 plus webapp, we use a slightly modified version of the official glassfish Dockerfile from docker hub.
+
+<script src="https://gist.github.com/lumue/7f88d5e0c54db75c5e70.js"></script>
 
