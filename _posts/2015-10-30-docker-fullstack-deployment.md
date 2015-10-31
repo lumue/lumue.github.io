@@ -67,11 +67,15 @@ which means our datacontainer is up and running.
 
 ## Databaseserver
 
+### getting the image
+
 We will use the firebird 2.5 superserver docker image from [jacobalberty/firebird](https://hub.docker.com/r/jacobalberty/firebird/).
 
 {% highlight bash %}
 docker pull jacobalberty/firebird:2.5-ss
 {% endhighlight %}
+
+### running the container
 
 For a production deployment we would map the exposed database volume to a path in the hosts filesystem (in this case ``/data/firebird/databases``). The image also exposes firebirds default port 3050. We will not expose it on the host machine, but instead build a connection between webapp and   database images later.
 
@@ -90,7 +94,25 @@ if everything is working as planned, you should see the same content in both con
 
 ## Application and Applicationserver
 
-To setup the image for glassfish4 plus webapp, we use a slightly modified version of the official glassfish Dockerfile from docker hub.
+### creating the image
+
+To setup the image for glassfish4 plus webapp, we use a custom shell script and a slightly modified version of the official glassfish Dockerfile from docker hub.
+both are displayed below.
 
 <script src="https://gist.github.com/lumue/7f88d5e0c54db75c5e70.js"></script>
+
+Lets see whats happening:
+
+#### The build.sh script
+
+ * template domain is packed into a .jar file
+ * docker build is executed
+
+#### In the Dockerfile
+
+ * glassfish is downloaded and installed (same as in the official image)
+ * .jar file with template domain is added to the image
+ * password.txt file containing the admin password is added
+ * glassfish domain named webapp is created from the template-domain
+ * the domain is started to execute the enable-security-admin command and stopped again
 
