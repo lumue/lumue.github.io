@@ -2,7 +2,7 @@
 .settings
 Gemfile
 Gemfile.lock
-#_site
+_site
 */*.kate-swp
 .idea
 lumue.github.io.git.iml
