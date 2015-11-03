@@ -12,13 +12,13 @@ tags:
 
 # Packaging a spring-boot application for distribution
 
-##But how
+## But how
 
 Over the last couple of weeks i built a little [web application](https://github.com/lumue/getdown) which allows for downloading files to a server. think headless version of jdownloader. because i wanted to try out some stuff like spring-boot,reactor,webcomponents, papyrus, websockets. and because i had use for a headless version of jdownloader.  
 Anyway, it's ready now for installation, and i want to package the application jar along with a script which allows it to run as a service and an external config file.
 But it turns out, imho, there is no really clean and portable way of doing so.  
 
-##Docker!
+## Docker!
 
 So i am going to do this with [docker](https://www.docker.com/). which seems to be the hip way to do it nowadays anyway.  
 And it turns out, there are even docker plugins for [maven](https://github.com/spotify/docker-maven-plugin) and [gradle](https://github.com/Transmode/gradle-docker) which let you build an docker image from a Dockerfile. Yay!  
@@ -27,9 +27,9 @@ which translates for me to: Java 8 anywhere :)
 Deploying to any major PaaS provider should theoretically work too.
 
 
-##What it looked like
+## What it looked like
 
-###build.gradle
+### build.gradle
 
 add this to build.gradle
 
@@ -64,7 +64,7 @@ task buildDocker(type: Docker, dependsOn: build) {
 
 {% endhighlight %}
 
-##build.gradle
+## Dockerfile
 
 and the Dockerfile for my application lives ins ``src/main/docker/`` and looks like this :
 
