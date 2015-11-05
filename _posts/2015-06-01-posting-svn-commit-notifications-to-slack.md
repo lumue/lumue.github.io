@@ -6,12 +6,12 @@ tags :
     - slack
 ---
 
-#Posting svn commit notifications to slack
+# Posting svn commit notifications to slack
 
 We are trying out [slack](http://www.slack.com) as a communication tool at work, and i thought it would be nice to post notifications about commits to our [svn](https://subversion.apache.org) repository to the channel i set up for project stuff.  
 So the plan is to setup a [post-commit hook](http://svnbook.red-bean.com/de/1.7/svn.ref.reposhooks.post-commit.html)  on the svn host which calls into slacks webapi.  
 
-##Posting to the slack webapi
+## Posting to the slack webapi
 
 I have already described howto post to slack channels from the shell in [another post]({% post_url 2015-06-01-posting-to-slack-from-shell %}).  
 To make it easier for to send the commit information to slack, i modified the script from the above mentioned post to accept a svn repo location and a revision number (which is what we get passed into the svn hook handler) instead of the message.
@@ -51,7 +51,7 @@ curl -i -X POST -H 'Accept: application/json' -H "Content-Type: application/json
 As you can see, there is some converting and replacing magic involved, to end up with a message which curl can hand over as valid json.
 
 
-##The SVN side
+## The SVN side
 
 Place the above script in a location where it is callable from svn (e.g. /usr/bin) and give it the appropriate execution rights.  
 
