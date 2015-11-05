@@ -5,12 +5,12 @@ tags:
     - slack
 ---
 
-#Posting to slack from shell (using the webapi)
+# Posting to slack from shell (using the webapi)
 
 We are trying out [slack](http://www.slack.com) as a communication tool at work, so i decided to give its webapi a little try.  
 What i want to do, is send a message from the commandline into slack.
 
-##Getting api access to slack
+## Getting api access to slack
 
 Access to slacks web api is authorized by an access token. so we need to obtaion one. to do this, log in to slack and point the browser to [slack webapi](https://api.slack.com/web).
 scroll down, and hit the issue token button.  
@@ -19,13 +19,13 @@ scroll down, and hit the issue token button.
 
 you can always go back to the [same url](https://api.slack.com/web) to view your token.
 
-##Using the slack api to post
+## Using the slack api to post
 
-###incoming webhooks
+### incoming webhooks
 
 To post a message to a slack channel, we need to setup an [incoming webhook](https://api.slack.com/incoming-webhooks).  
 
-####creating the webhook
+#### creating the webhook
 
 In order to do so, navigate to [new incoming webhook](https://<teamname>.slack.com/services/new/incoming-webhook), select in which channel you want the messages to appear, and click the big green button which says "Add incoming WebHooks Integration". The selected channel is just a default and can be overriden when sending the actual message. 
 
@@ -35,7 +35,7 @@ The URL of the created webhook is shown on th resulting page:
 
 ![setting up an incoming webhook in slack](/assets/slack-new-incoming-webhook-result.png)
 
-####testing the webhook
+#### testing the webhook
 
 Let's see if this works:  
 
@@ -49,7 +49,7 @@ if everything works as it should, you should see this testmessage  displayed in 
 
 the username does not have to exist in your slack team.
 
-###roll everything into a friendly bash script
+### roll everything into a friendly bash script
 
 because i know i will never be able to memorize this call properly we will put this into a shell script i will call "slack_send.sh". also, it will look cleaner this way when used from the commit-hook script later on.  
 
