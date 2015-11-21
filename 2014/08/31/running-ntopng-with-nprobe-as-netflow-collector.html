@@ -198,15 +198,15 @@
 
 </header>
     <section>
-        <p>#running ntopng on ubuntu 14.04</p>
+        <h1 id="running-ntopng-on-ubuntu-1404">running ntopng on ubuntu 14.04</h1>
 
-<p>##starting nprobe</p>
+<h2 id="starting-nprobe">starting nprobe</h2>
 
 <p><code>
 sudo nprobe --zmq tcp://*:5556 -i none -n none -b 2 -3 9996 -G
 </code></p>
 
-<p>##starting ntopng</p>
+<h2 id="starting-ntopng">starting ntopng</h2>
 
 <p><code>
 sudo ntopng -i tcp://127.0.0.1:5556 -e -F
