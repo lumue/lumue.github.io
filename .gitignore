@@ -2,7 +2,6 @@
 .settings
 Gemfile
 Gemfile.lock
-_site
 */*.kate-swp
 .idea
 *.iml
