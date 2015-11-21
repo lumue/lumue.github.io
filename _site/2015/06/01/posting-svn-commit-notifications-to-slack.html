@@ -201,7 +201,7 @@
         <h1 id="posting-svn-commit-notifications-to-slack">Posting svn commit notifications to slack</h1>
 
 <p>We are trying out <a href="http://www.slack.com">slack</a> as a communication tool at work, and i thought it would be nice to post notifications about commits to our <a href="https://subversion.apache.org">svn</a> repository to the channel i set up for project stuff.  <br />
-So the plan is to setup a <a href="http://svnbook.red-bean.com/de/1.7/svn.ref.reposhooks.post-commit.html">post-commit hook</a>  on the svn host which calls into slacks webapi.</p>
+So the plan is to setup a <a href="http://svnbook.red-bean.com/de/1.7/svn.ref.reposhooks.post-commit.html">post-commit hook</a>  on the svn host which calls into slacks webapi.  </p>
 
 <h2 id="posting-to-the-slack-webapi">Posting to the slack webapi</h2>
 
@@ -211,14 +211,14 @@ Also the user and channel name are fix.</p>
 
 <p>Now it looks like this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
 
 <span class="c">#these have to be obtained from slack</span>
-<span class="nv">api_token</span><span class="o">=</span><span class="s2">"your slack webapi token"</span>
-<span class="nv">url</span><span class="o">=</span><span class="s2">"https://your webhook url"</span>
+<span class="nv">api_token</span><span class="o">=</span><span class="s2">&quot;your slack webapi token&quot;</span>
+<span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://your webhook url&quot;</span>
 
-<span class="nv">username</span><span class="o">=</span><span class="s2">"svnbot"</span>
-<span class="nv">channel</span><span class="o">=</span><span class="s2">"#korona-resource"</span>
+<span class="nv">username</span><span class="o">=</span><span class="s2">&quot;svnbot&quot;</span>
+<span class="nv">channel</span><span class="o">=</span><span class="s2">&quot;#korona-resource&quot;</span>
 
 <span class="c">#commandline parameter</span>
 <span class="nv">repo</span><span class="o">=</span><span class="nv">$1</span>
@@ -226,33 +226,33 @@ Also the user and channel name are fix.</p>
 
 <span class="c">#build message</span>
 <span class="nv">message</span><span class="o">=</span><span class="sb">`</span>svn log --revision <span class="nv">$revision</span> <span class="nv">$repo</span><span class="sb">`</span>
-<span class="nv">message</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$message</span> | iconv -f iso8859-1 -t ascii//translit<span class="sb">`</span>
-<span class="nv">message</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$message</span> | sed <span class="s2">"s/'/</span><span class="se">\\\\\'</span><span class="s2">/g"</span><span class="sb">`</span>
+<span class="nv">message</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$message</span> <span class="p">|</span> iconv -f iso8859-1 -t ascii//translit<span class="sb">`</span>
+<span class="nv">message</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$message</span> <span class="p">|</span> sed <span class="s2">&quot;s/&#39;/\\\\\&#39;/g&quot;</span><span class="sb">`</span>
 <span class="nv">message</span><span class="o">=</span><span class="k">${</span><span class="nv">message</span><span class="p">//--/</span><span class="k">}</span>
 <span class="nv">message</span><span class="o">=</span><span class="k">${</span><span class="nv">message</span><span class="p">//|/\\n</span><span class="k">}</span>
 
 <span class="c">#build json</span>
-<span class="nv">jsonstring</span><span class="o">=</span><span class="s2">"{</span><span class="se">\"</span><span class="s2">token</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$api_token</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">channel</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$channel</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">username</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$username</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$message</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">icon_emoji</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">:ghost:</span><span class="se">\"</span><span class="s2">}"</span>
+<span class="nv">jsonstring</span><span class="o">=</span><span class="s2">&quot;{\&quot;token\&quot;:\&quot;$api_token\&quot;,\&quot;channel\&quot;:\&quot;$channel\&quot;,\&quot;username\&quot;:\&quot;$username\&quot;,\&quot;text\&quot;:\&quot;$message\&quot;,\&quot;icon_emoji\&quot;:\&quot;:ghost:\&quot;}&quot;</span>
 <span class="nb">echo</span> <span class="nv">$jsonstring</span> &gt; /tmp/slack_git_msg
 
 <span class="c">#call curl</span>
-curl -i -X POST -H <span class="s1">'Accept: application/json'</span> -H <span class="s2">"Content-Type: application/json; charset=ascii"</span>  --data @/tmp/slack_git_msg <span class="nv">$url</span></code></pre></figure>
+curl -i -X POST -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s2">&quot;Content-Type: application/json; charset=ascii&quot;</span>  --data @/tmp/slack_git_msg <span class="nv">$url</span></code></pre></div>
 
 <p>As you can see, there is some converting and replacing magic involved, to end up with a message which curl can hand over as valid json.</p>
 
 <h2 id="the-svn-side">The SVN side</h2>
 
-<p>Place the above script in a location where it is callable from svn (e.g. /usr/bin) and give it the appropriate execution rights.</p>
+<p>Place the above script in a location where it is callable from svn (e.g. /usr/bin) and give it the appropriate execution rights.  </p>
 
 <p>Next we have to tell svn to call the script and pass it the correct parameters after each commit to our repository(-branch).  <br />
 To do this, edit the post-commit script of your repository. Its usually located in <code>&lt;path-to-repo&gt;/hooks/post-commit</code>.</p>
 
 <p>Add the following lines:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span>svnlook changed <span class="k">${</span><span class="nv">REPOS</span><span class="k">}</span> -r <span class="k">${</span><span class="nv">REV</span><span class="k">}</span> | grep &lt;branchname&gt;<span class="k">)</span><span class="s2">"</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;$(svnlook changed ${REPOS} -r ${REV} | grep &lt;branchname&gt;)&quot;</span> <span class="o">]</span>
 <span class="k">then</span>
   /usr/bin/slack_send_svnlog.sh <span class="k">${</span><span class="nv">REPOS</span><span class="k">}</span> <span class="k">${</span><span class="nv">REV</span><span class="k">}</span>
-<span class="k">fi</span></code></pre></figure>
+<span class="k">fi</span></code></pre></div>
 
 <p>And we are done here. A commit should now produce a post displaying the commit message in the selected slack channel:</p>
 
@@ -260,6 +260,8 @@ To do this, edit the post-commit script of your repository. Its usually located 
 
         <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#svn">svn</a>,

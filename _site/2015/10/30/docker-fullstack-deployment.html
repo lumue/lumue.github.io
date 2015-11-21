@@ -201,7 +201,7 @@
         <h1 id="deploying-jee-webapplication-and-rdbms-with-docker">Deploying jee webapplication and rdbms with docker</h1>
 
 <p>I plan to migrate a testing environment comprised of a few jee webapps running on glassfish and connecting to a firebird database to a set of docker containers.<br />
-I tried this for one of the application, and here is how it can be done:</p>
+I tried this for one of the application, and here is how it can be done:  </p>
 
 <h2 id="what-will-be-deployed">What will be deployed</h2>
 
@@ -211,7 +211,7 @@ I tried this for one of the application, and here is how it can be done:</p>
   <li>war packaged java webapp</li>
   <li>glassfish jee container</li>
   <li>firebird database server</li>
-  <li>datacontainer with prefilled firebird db volume (for testing)</li>
+  <li>datacontainer with prefilled firebird db volume (for testing) </li>
   <li>datacontainer with prefilled application working directory (for testing)</li>
 </ul>
 
@@ -226,7 +226,7 @@ This will save you some diskspace, but other than that its irrelevant what you u
 
 <p>The <a href="https://github.com/jacobalberty/firebird-docker/blob/master/2.5-ss/Dockerfile">Dockerfile</a> for jacobalberty/firebird:2.5-ss reveals the base image used:</p>
 
-<figure class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile">FROM debian:jessie</code></pre></figure>
+<div class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span> debian:jessie</code></pre></div>
 
 <p>We want our image to expose two volumes. one for database file(s), and one for the work directory.<br />
 The Dockerfile below can be used to build this image.</p>
@@ -236,13 +236,13 @@ The Dockerfile below can be used to build this image.</p>
 <p>It shall be named appdata, for it stores appdata!<br />
 to build and run this image execute</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker build -t &lt;your_repo&gt;/appdata .
-docker -d --name appdata &lt;your_repo&gt;/appdata</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">docker build -t &lt;your_repo&gt;/appdata .
+docker -d --name appdata &lt;your_repo&gt;/appdata</code></pre></div>
 
 <p>check the result by running <code>docker ps</code>. if all went well you should see output like this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">CONTAINER ID        IMAGE                      COMMAND             CREATED             STATUS              PORTS               NAMES
-55c6523c4307        18384fe4a822....e558e295   <span class="s2">"/bin/bash"</span>         21 minutes ago      Up 18 minutes                           appdata</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">CONTAINER ID        IMAGE                      COMMAND             CREATED             STATUS              PORTS               NAMES
+55c6523c4307        18384fe4a822....e558e295   <span class="s2">&quot;/bin/bash&quot;</span>         <span class="m">21</span> minutes ago      Up <span class="m">18</span> minutes                           appdata</code></pre></div>
 
 <p>which means our datacontainer is up and running.</p>
 
@@ -252,17 +252,17 @@ docker -d --name appdata &lt;your_repo&gt;/appdata</code></pre></figure>
 
 <p>We will use the firebird 2.5 superserver docker image from <a href="https://hub.docker.com/r/jacobalberty/firebird/">jacobalberty/firebird</a>.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker pull jacobalberty/firebird:2.5-ss</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">docker pull jacobalberty/firebird:2.5-ss</code></pre></div>
 
 <h3 id="running-the-container">running the container</h3>
 
 <p>For a production deployment we would map the exposed database volume to a path in the hosts filesystem (in this case <code>/data/firebird/databases</code>). The image also exposes firebirds default port 3050. We will not expose it on the host machine, but instead build a connection between webapp and   database images later.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -d --name firebird -v /data/firebird/databases:/databases jacobalberty/firebird:2.5-ss</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -d --name firebird -v /data/firebird/databases:/databases jacobalberty/firebird:2.5-ss</code></pre></div>
 
 <p>But what we want to do is use our datacontainer “appdata” to store the database files. To tell docker about it we have to use the –volumes-from flag when starting the firebird image:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -d --name firebird --volumes-from appdata jacobalberty/firebird:2.5-ss</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -d --name firebird --volumes-from appdata jacobalberty/firebird:2.5-ss</code></pre></div>
 
 <p>you can verify that the firebird container uses volumes from appdata by attaching to both containers and writing to the /databases directory.<br />
 if everything is working as planned, you should see the same content in both containers.</p>
@@ -298,6 +298,8 @@ both are displayed below.</p>
 
         <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#linux">linux</a>,

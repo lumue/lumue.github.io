@@ -206,9 +206,9 @@ What i want to do, is send a message from the commandline into slack.</p>
 <h2 id="getting-api-access-to-slack">Getting api access to slack</h2>
 
 <p>Access to slacks web api is authorized by an access token. so we need to obtaion one. to do this, log in to slack and point the browser to <a href="https://api.slack.com/web">slack webapi</a>.<br />
-scroll down, and hit the issue token button.</p>
+scroll down, and hit the issue token button.  </p>
 
-<p><img src="/assets/slack-get-token-screen.png" alt="creating the webapi token" /></p>
+<p><img src="/assets/slack-get-token-screen.png" alt="creating the webapi token" />  </p>
 
 <p>you can always go back to the <a href="https://api.slack.com/web">same url</a> to view your token.</p>
 
@@ -216,25 +216,25 @@ scroll down, and hit the issue token button.</p>
 
 <h3 id="incoming-webhooks">incoming webhooks</h3>
 
-<p>To post a message to a slack channel, we need to setup an <a href="https://api.slack.com/incoming-webhooks">incoming webhook</a>.</p>
+<p>To post a message to a slack channel, we need to setup an <a href="https://api.slack.com/incoming-webhooks">incoming webhook</a>.  </p>
 
 <h4 id="creating-the-webhook">creating the webhook</h4>
 
-<p>In order to do so, navigate to <a href="https://&lt;teamname&gt;.slack.com/services/new/incoming-webhook">new incoming webhook</a>, select in which channel you want the messages to appear, and click the big green button which says “Add incoming WebHooks Integration”. The selected channel is just a default and can be overriden when sending the actual message.</p>
+<p>In order to do so, navigate to <a href="https://&lt;teamname&gt;.slack.com/services/new/incoming-webhook">new incoming webhook</a>, select in which channel you want the messages to appear, and click the big green button which says “Add incoming WebHooks Integration”. The selected channel is just a default and can be overriden when sending the actual message. </p>
 
 <p><img src="/assets/slack-new-incoming-webhook-screen.png" alt="setting up an incoming webhook in slack" /></p>
 
-<p>The URL of the created webhook is shown on th resulting page:</p>
+<p>The URL of the created webhook is shown on th resulting page:  </p>
 
 <p><img src="/assets/slack-new-incoming-webhook-result.png" alt="setting up an incoming webhook in slack" /></p>
 
 <h4 id="testing-the-webhook">testing the webhook</h4>
 
-<p>Let’s see if this works:</p>
+<p>Let’s see if this works:  </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl -X POST --data-urlencode <span class="s1">'payload={"token":"&lt;your-token-here&gt;","channel": "#korona-resource","username": "lumue","text": "This is posted to #korona-resource from lm","icon_emoji": ":ghost:"}'</span> https://&lt;your-incoming-webhook-url-here&gt;</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl -X POST --data-urlencode <span class="s1">&#39;payload={&quot;token&quot;:&quot;&lt;your-token-here&gt;&quot;,&quot;channel&quot;: &quot;#korona-resource&quot;,&quot;username&quot;: &quot;lumue&quot;,&quot;text&quot;: &quot;This is posted to #korona-resource from lm&quot;,&quot;icon_emoji&quot;: &quot;:ghost:&quot;}&#39;</span> https://&lt;your-incoming-webhook-url-here&gt;</code></pre></div>
 
-<p>if everything works as it should, you should see this testmessage  displayed in the selected channel:</p>
+<p>if everything works as it should, you should see this testmessage  displayed in the selected channel:  </p>
 
 <p><img src="/assets/slack-view-testpost.png" alt="setting up an incoming webhook in slack" /></p>
 
@@ -242,12 +242,12 @@ scroll down, and hit the issue token button.</p>
 
 <h3 id="roll-everything-into-a-friendly-bash-script">roll everything into a friendly bash script</h3>
 
-<p>because i know i will never be able to memorize this call properly we will put this into a shell script i will call “slack_send.sh”. also, it will look cleaner this way when used from the commit-hook script later on.</p>
+<p>because i know i will never be able to memorize this call properly we will put this into a shell script i will call “slack_send.sh”. also, it will look cleaner this way when used from the commit-hook script later on.  </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
 <span class="c">#these have to be setup via slack</span>
-<span class="nv">api_token</span><span class="o">=</span><span class="s2">"&lt;your-token-here&gt;"</span>
-<span class="nv">url</span><span class="o">=</span><span class="s2">"https://&lt;your-webhook-url-here&gt;"</span>
+<span class="nv">api_token</span><span class="o">=</span><span class="s2">&quot;&lt;your-token-here&gt;&quot;</span>
+<span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://&lt;your-webhook-url-here&gt;&quot;</span>
 
 <span class="c">#commandline parameter</span>
 <span class="nv">message</span><span class="o">=</span><span class="nv">$1</span>
@@ -255,13 +255,15 @@ scroll down, and hit the issue token button.</p>
 <span class="nv">username</span><span class="o">=</span><span class="nv">$3</span>
 
 <span class="c">#assemble json payload</span>
-<span class="nv">jsonstring</span><span class="o">=</span><span class="s2">"'payload={</span><span class="se">\"</span><span class="s2">token</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$api_token</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">channel</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$channel</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">username</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$username</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="nv">$message</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">icon_emoji</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">:ghost:</span><span class="se">\"</span><span class="s2">}'"</span>
+<span class="nv">jsonstring</span><span class="o">=</span><span class="s2">&quot;&#39;payload={\&quot;token\&quot;:\&quot;$api_token\&quot;,\&quot;channel\&quot;:\&quot;$channel\&quot;,\&quot;username\&quot;:\&quot;$username\&quot;,\&quot;text\&quot;:\&quot;$message\&quot;,\&quot;icon_emoji\&quot;:\&quot;:ghost:\&quot;}&#39;&quot;</span>
 
 <span class="c">#call curl</span>
-curl -X POST --data-urlencode <span class="nv">$jsonstring</span> <span class="nv">$url</span></code></pre></figure>
+curl -X POST --data-urlencode <span class="nv">$jsonstring</span> <span class="nv">$url</span></code></pre></div>
 
         <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#slack">slack</a>

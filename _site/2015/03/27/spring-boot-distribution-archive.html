@@ -204,7 +204,7 @@
 
 <p>Over the last couple of weeks i built a little <a href="https://github.com/lumue/getdown">web application</a> which allows for downloading files to a server. think headless version of jdownloader. because i wanted to try out some stuff like spring-boot,reactor,webcomponents, papyrus, websockets. and because i had use for a headless version of jdownloader.  <br />
 Anyway, it’s ready now for installation, and i want to package the application jar along with a script which allows it to run as a service and an external config file.<br />
-But it turns out, imho, there is no really clean and portable way of doing so.</p>
+But it turns out, imho, there is no really clean and portable way of doing so.  </p>
 
 <h2 id="docker">Docker!</h2>
 
@@ -220,22 +220,22 @@ Deploying to any major PaaS provider should theoretically work too.</p>
 
 <p>add this to build.gradle</p>
 
-<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">buildscript</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">buildscript</span> <span class="o">{</span>
     <span class="n">dependencies</span> <span class="o">{</span>
-    	<span class="n">classpath</span><span class="o">(</span><span class="s1">'se.transmode.gradle:gradle-docker:1.2'</span><span class="o">)</span>
+    	<span class="n">classpath</span><span class="o">(</span><span class="s1">&#39;se.transmode.gradle:gradle-docker:1.2&#39;</span><span class="o">)</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'docker'</span>
+<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;docker&#39;</span>
 
-<span class="n">group</span> <span class="o">=</span> <span class="s1">'somehost:5000'</span> <span class="c1">//your docker registry location</span>
+<span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;somehost:5000&#39;</span> <span class="c1">//your docker registry location</span>
 
 <span class="n">task</span> <span class="nf">buildDocker</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Docker</span><span class="o">,</span> <span class="nl">dependsOn:</span> <span class="n">build</span><span class="o">)</span> <span class="o">{</span>
 	
 	<span class="n">push</span> <span class="o">=</span> <span class="kc">true</span>
 	<span class="n">applicationName</span> <span class="o">=</span> <span class="n">jar</span><span class="o">.</span><span class="na">baseName</span>
 	
-	<span class="n">dockerfile</span> <span class="o">=</span> <span class="n">file</span><span class="o">(</span><span class="s1">'src/main/docker/Dockerfile'</span><span class="o">)</span>
+	<span class="n">dockerfile</span> <span class="o">=</span> <span class="n">file</span><span class="o">(</span><span class="s1">&#39;src/main/docker/Dockerfile&#39;</span><span class="o">)</span>
 	
 	<span class="n">doFirst</span> <span class="o">{</span>
 	  <span class="n">copy</span> <span class="o">{</span>
@@ -244,23 +244,25 @@ Deploying to any major PaaS provider should theoretically work too.</p>
 	  <span class="o">}</span>
 	<span class="o">}</span>
 	
-  <span class="o">}</span></code></pre></figure>
+  <span class="o">}</span></code></pre></div>
 
 <h2 id="dockerfile">Dockerfile</h2>
 
 <p>and the Dockerfile for my application lives ins <code>src/main/docker/</code> and looks like this :</p>
 
-<figure class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile">FROM jeanblanchard/busybox-java:8
-MAINTAINER lm "lm@combase.de"
+<div class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span> jeanblanchard/busybox-java:8
+<span class="k">MAINTAINER</span> lm <span class="s2">&quot;lm@combase.de&quot;</span>
 
-ADD getdown-app-springboot.jar app.jar
-RUN touch /app.jar
-CMD mkdir /media
-ENTRYPOINT ["java","-jar","/app.jar"]</code></pre></figure>
+<span class="k">ADD</span> getdown-app-springboot.jar app.jar
+<span class="k">RUN</span> touch /app.jar
+<span class="k">CMD</span> mkdir /media
+<span class="k">ENTRYPOINT</span> <span class="o">[</span><span class="s2">&quot;java&quot;</span>,<span class="s2">&quot;-jar&quot;</span>,<span class="s2">&quot;/app.jar&quot;</span><span class="o">]</span></code></pre></div>
 
 
         <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#docker">docker</a>,
