@@ -8,7 +8,7 @@ tags :
 
 # Noticed by Google
 
-Yay! The google-bot came by for the first time! Over the last days, i did the following things to lure it here:
+Yay! The google bot came by for the first time! Over the last days, i did the following things to lure it here:
 
  * added a sitemap
  * added rss feed
