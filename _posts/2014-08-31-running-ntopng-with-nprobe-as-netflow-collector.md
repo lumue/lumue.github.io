@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  running ntopng on ubuntu 14.04
 tags:
  - linux

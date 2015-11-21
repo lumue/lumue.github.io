@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  Using a Logitech G13 gaming keypad on debian sid
 tags:
  - linux

@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title : Deploying jee webapplication and rdbms with docker 
 tags:
  - linux

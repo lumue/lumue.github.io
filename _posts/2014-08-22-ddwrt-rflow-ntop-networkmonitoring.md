@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  LAN Traffic monitoring with dd-wrt
 tags:
  - linux

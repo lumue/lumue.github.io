@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  Hello World! with KODI
 tags:
  - python
