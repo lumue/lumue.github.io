@@ -3,11 +3,13 @@ layout : layout
 title : Packaging a spring-boot application for distribution with docker
 tags:
  - docker
- - spring-boot
- - getdown
  - java
  - devops
  - spring
+ - spring-boot
+ - coding
+ - project automation
+update : 2015-11-22 00:00:00
 ---
 
 # Packaging a spring-boot application for distribution

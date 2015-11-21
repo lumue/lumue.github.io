@@ -2,8 +2,9 @@
 layout : layout
 title :  A redirect page with fallbacks
 tags:
- - html5
  - html
+ - coding
+update : 2015-11-22 00:00:00
 ---
 
 # A Template HTML5 redirect page

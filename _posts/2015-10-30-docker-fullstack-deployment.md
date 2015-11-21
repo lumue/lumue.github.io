@@ -9,6 +9,9 @@ tags:
  - devops
  - jee
  - java
+ - coding
+ - project automation
+update : 2015-11-22 00:00:00
 ---
 
 # Deploying jee webapplication and rdbms with docker
