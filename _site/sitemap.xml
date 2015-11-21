@@ -3,6 +3,21 @@
     
     
     <url>
+        <loc>http://lumue.github.io/2015/11/22/noticed-by-google.html</loc>
+        
+        <lastmod>2015-11-22T00:00:00+01:00</lastmod>
+        
+        
+        <changefreq>monthly</changefreq>
+        
+        
+        <priority>0.5</priority>
+        
+    </url>
+    
+    
+    
+    <url>
         <loc>http://lumue.github.io/2015/11/03/using-logitech-g13-on-debian-sid.html</loc>
         
         <lastmod>2015-11-03T00:00:00+01:00</lastmod>
@@ -165,7 +180,7 @@
     <url>
         <loc>http://lumue.github.io</loc>
         
-        <lastmod>2015-11-21T22:05:45+01:00</lastmod>
+        <lastmod>2015-11-21T22:18:49+01:00</lastmod>
         
         
         <changefreq>monthly</changefreq>
