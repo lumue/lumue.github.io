@@ -16,7 +16,7 @@
             <content type='html'>{{ post.content | xml_escape }}</content>
             <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
             {% if post.update %}
-            <updated>{{ post.updated | date_to_rfc822 }}</updated>
+            <updated>{{ post.update | date_to_rfc822 }}</updated>
             {% endif %}
             <link>{{ site.url }}{{ post.url }}</link>
             <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
