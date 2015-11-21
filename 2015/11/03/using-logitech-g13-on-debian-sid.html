@@ -14,6 +14,7 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
+    <link rel="alternate" type="application/rss+xml" title="gosub" href="http://lumue.github.io/feed.xml">
 </head>
 <body>
 <div class="wrapper">
@@ -28,7 +29,7 @@
 
     <p> <ul class="tag-cloud">
     
-    <li class="tag-cloud-item" style="font-size: 87%">
+    <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#java">
             java
         </a>
@@ -58,7 +59,7 @@
         </a>
     </li>
     
-    <li class="tag-cloud-item" style="font-size: 87%">
+    <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#linux">
             linux
         </a>
@@ -166,6 +167,12 @@
         </a>
     </li>
     
+    <li class="tag-cloud-item" style="font-size: 74%">
+        <a href="#gaming">
+            gaming
+        </a>
+    </li>
+    
 </ul></p>
 
     <ul class="button-list">
@@ -190,6 +197,9 @@
     <section>
         <h1 id="using-a-logitech-g13-gaming-keypad-on-debian-sid">Using a Logitech G13 gaming keypad on debian sid</h1>
 
+<p>This is a short HOWTO on setting up g13d as a systemd controlled service on debian linux.  <br />
+If you just want to use your g13 and dont care about how it is done, fair enough: I compiled what is described here into a bunch of shell scripts ready to checkout and execute for you from <a href="https://github.com/lumue/g13d-service">here</a>.</p>
+
 <h2 id="checkout-and-build">checkout and build</h2>
 
 <p>go to <a href="https://github.com/ecraven/g13">https://github.com/ecraven/g13</a>, checkout their repo and follow the installation instructions.</p>
@@ -201,14 +211,141 @@ make
 
 <h2 id="installation">installation</h2>
 
-<p>copy the <code>g13d</code> binary to <code>/usr/bin/</code> or make it otherwise accesible on your path.</p>
+<p>copy the <code>g13d</code> binary to <code>/usr/bin/g13d</code> or make it otherwise accesible on your path.</p>
 
-<pre><code>sudo cp g13d /usr/bin/g13d
+<pre><code>sudo cp g13d /usr/bin/g13d &amp;&amp; sudo chmod a+x /usr/bin/g13d
 </code></pre>
 
-<p>create a file containing your bindings</p>
+<p>create a start script g13d-run to init the bindings and start g13d and put it in <code>/usr/bin</code></p>
 
-<p>create a directory <code>/etc/g13.d</code> and put your bindings in a file named <code>/etc/g13.d/default.bind</code></p>
+<pre><code>sudo touch /usr/bin/g13d-run &amp;&amp; sudo chmod a+x/usr/bing13d-run
+</code></pre>
+
+<p>open the file and paste the following script:</p>
+
+<pre><code>#!/usr/bin/env bash
+G13D_WORK="/tmp/g13d"
+
+if [ -d G13D_WORK ]
+then
+    echo "using existing $G13D_WORK as working directory ..."
+else
+    echo "creating $G13D_WORK as working directory ..."
+    mkdir "$G13D_WORK"
+fi
+
+cd "$G13D_WORK"
+cat /etc/g13d.d/default.bind &gt;&gt; /tmp/g13-0
+/usr/bin/g13d
+</code></pre>
+
+<h3 id="setup-systemd-service">setup systemd service</h3>
+
+<p>create a start script for the service named <code>g13d-service</code> and save it in <code>/etc/init.d</code></p>
+
+<pre><code>sudo touch /etc/init.d/g13d-service &amp;&amp; sudo chmod a+x /etc/init.d/g13d-service
+</code></pre>
+
+<p>open the file and paste the following script:</p>
+
+<pre><code>#!/bin/bash
+G13D_HOME="/usr/lib/g13d"
+PID=""
+
+function get_pid {
+   PID=`pidof g13d`
+}
+
+function stop {
+   get_pid
+   if [ -z $PID ]; then
+      echo "server is not running."
+      exit 1
+   else
+      echo -n "Stopping server.."
+      kill -9 $PID
+      sleep 1
+      echo ".. Done."
+   fi
+}
+
+
+function start {
+   get_pid
+   if [ -z $PID ]; then
+      echo  "Starting server.."
+        (/usr/bin/g13d-run &amp;&gt; /dev/null  &amp;) &amp;
+      get_pid
+      echo "Done. PID=$PID"
+   else
+      echo "server is already running, PID=$PID"
+   fi
+}
+
+function restart {
+   echo  "Restarting server.."
+   get_pid
+   if [ -z $PID ]; then
+      start
+   else
+      stop
+      sleep 5
+      start
+   fi
+}
+
+
+function status {
+   get_pid
+   if [ -z  $PID ]; then
+      echo "Server is not running."
+      exit 1
+   else
+      echo "Server is running, PID=$PID"
+   fi
+}
+
+case "$1" in
+   start)
+      start
+   ;;
+   stop)
+      stop
+   ;;
+   restart)
+      restart
+   ;;
+   status)
+      status
+   ;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+esac
+</code></pre>
+
+<p>create a systemd .service script for the service named <code>g13d-service.service</code> and save it in <code>/lib/systemd/g13d-service.service</code></p>
+
+<pre><code>sudo touch /lib/systemd/g13d-service.service &amp;&amp; sudo chmod a+x /lib/systemd/g13d-service.service
+</code></pre>
+
+<p>open the file and paste the following script:</p>
+
+<pre><code>[Unit]
+Description=Start g13d-service
+
+[Service]
+WorkingDirectory=/tmp/g13d
+Type=forking
+ExecStart=/bin/bash /etc/init.d/g13d-service start
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<h3 id="setup-default-bindings">setup default bindings</h3>
+
+<p>create a directory <code>/etc/g13d.d</code> and put your bindings in a file named <code>/etc/g13d.d/default.bind</code></p>
 
 <p>my bindings file looks like this:</p>
 
@@ -237,11 +374,31 @@ bind G22 KEY_TAB
 bind DOWN KEY_LEFTALT
 </code></pre>
 
+<p>Now execute</p>
+
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl enable g13d-service.service
+</code></pre>
+
+<p>to install the service, and we are done!</p>
+
+<h2 id="running">Running</h2>
+
+<p>Now you can control g13d like any other service on your box. just issue</p>
+
+<pre><code>sudo systemctl status g13d-service
+</code></pre>
+
+<p>to start the service.</p>
+
+
         <div class="post-tags">
   Tags: 
   
   
-  <a href="/tags/#linux">linux</a>
+  <a href="/tags/#linux">linux</a>,
+  
+  <a href="/tags/#gaming">gaming</a>
   
 </div>
         <div id="disqus_thread"></div>
@@ -261,6 +418,10 @@ bind DOWN KEY_LEFTALT
     <footer>
         <p>
             <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+            </small>
+        </p>
+        <p>
+            <small><a href="http://lumue.github.io/feed.xml">RSS</a>
             </small>
         </p>
     </footer>
