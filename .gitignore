@@ -5,4 +5,4 @@ Gemfile.lock
 _site
 */*.kate-swp
 .idea
-lumue.github.io.git.iml
+*.iml
