@@ -15,6 +15,7 @@
             {% endif %}
             <content type='html'>{{ post.content | xml_escape }}</content>
             <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+            <updated>2015-11-21T00:00:02Z</updated>
             <link>{{ site.url }}{{ post.url }}</link>
             <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
             {% for tag in post.tags %}
