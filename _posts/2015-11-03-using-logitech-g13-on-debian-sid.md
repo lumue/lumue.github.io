@@ -21,7 +21,6 @@ go to [https://github.com/ecraven/g13](https://github.com/ecraven/g13), checkout
 
 ## installation
 
-
 copy the ``g13d`` binary to ``/usr/bin/g13d`` or make it otherwise accesible on your path.
 
     sudo cp g13d /usr/bin/g13d && sudo chmod a+x /usr/bin/g13d
