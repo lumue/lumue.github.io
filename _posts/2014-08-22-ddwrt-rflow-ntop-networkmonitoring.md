@@ -8,9 +8,9 @@ tags:
  - dd-wrt
 ---
 
-#LAN Traffic monitoring with dd-wrt
+# LAN Traffic monitoring with dd-wrt
 
-##My setup
+## My setup
 I use an ancient wrt54 running dd-wrt to keep our home devices connected. it has no fancy gbit interfaces or super fast wlan, but aside from the occasional dhcpd crash, it is really a reliable little box. 
 i think i have used it for over 9 years now.  
 first with external antennas to connect to the residential community wlan, later when i switched to a dsl land line, i started to use it as my home router and wifi accesspoint..
@@ -26,9 +26,9 @@ Whats missing is a tool that lets me "see" what is going on inside my home lan a
 since the wrt54 is the only device which is connected to lan and wlan, this is where the capturing tool will run. 
 for data collection and crunching i plan to use ntop on another box.
 
-##How to do it
+## How to do it
 
-###Setting up the RFlow probe 
+### Setting up the RFlow probe
 The probing can be activated in dd-wrt's web console. The RFlow section is located under services and looks like this:
 
 ![RFlow configuration via dd-wrt web console](/assets/dd-wrt-admin-rflow-section.png)
@@ -38,9 +38,9 @@ The probing can be activated in dd-wrt's web console. The RFlow section is locat
 
 Save the settings, and the router setup should be complete. easy!
 
-###ntop
+### ntop
 
-####Installation
+#### Installation
 
 ```
 lm@voyager3:~$ sudo apt-get install ntop*
@@ -52,7 +52,7 @@ The designated ntop host is a box running ubuntu 14.04. i use apt-get to install
 almost to easy to blog :D but its not done until its in production as they say.  
 next is setting up ntop.
 
-####Setup
+#### Setup
 
 ntop configuration is done in a webui. note that we are doing linux sysadmin stuff, and yet no config file has been touched and no kernel module has been compiled!  
 personally, i dont like all this userfriendliness. kids these days.

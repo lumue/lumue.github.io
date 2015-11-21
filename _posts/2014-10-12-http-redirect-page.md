@@ -6,7 +6,7 @@ tags:
  - html
 ---
 
-#A Template HTML5 redirect page
+# A Template HTML5 redirect page
 
 
 {% highlight html %}
