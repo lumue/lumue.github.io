@@ -4,12 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Lumue.github.io by lumue</title>
-
-    <link rel="stylesheet" href="/stylesheets/styles.css">
-    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,17 +12,18 @@
     <link rel="alternate" type="application/rss+xml" title="gosub" href="http://lumue.github.io/feed.xml">
 </head>
 <body>
-<div class="wrapper">
+<div >
     <header>
-    <h1 class="header">
-        <a href="/index.html">gosub</a>
-    </h1>
-
-    <p class="header">
-        a weblog
-    </p>
-
-    <p> <ul class="tag-cloud">
+    <div id="header">
+        <h1>
+            <a href="/index.html">gosub</a>
+        </h1>
+        <p>
+            a weblog about computer stuff
+        </p>
+    </div>
+    <p>
+        <ul>
     
     <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#java">
@@ -173,32 +169,33 @@
         </a>
     </li>
     
-</ul></p>
-
-    <ul class="button-list">
-        <li class="button-list-item"><a class="buttons github" href="https://github.com/lumue">github/lumue</a></li>
-        <li class="button-list-item">
-            <a href="https://twitter.com/lutzmueller" class="buttons" data-show-count="false" data-show-screen-name="false">@lutzmueller</a>
-            <script>
-                !function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                    if (!d.getElementById(id)) {
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = p + '://platform.twitter.com/widgets.js';
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }
-                }(document, 'script', 'twitter-wjs');
-            </script>
-        </li>
-        <li>
-            <a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml">RSS</a>
-        </li>
-    </ul>
-
+</ul>
+    </p>
 </header>
-    <section>
-        <h1 id="load-balancing-insert-and-update-requests-to-a-http-api-using-spring-integration">Load balancing insert and update requests to a http api using spring-integration</h1>
+
+
+    <ul>
+    <li><a href="https://github.com/lumue">github/lumue</a></li>
+    <li>
+        <a href="https://twitter.com/lutzmueller"  data-show-count="false" data-show-screen-name="false">@lutzmueller</a>
+        <script>
+            !function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = p + '://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, 'script', 'twitter-wjs');
+        </script>
+    </li>
+    <li>
+        <a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml">RSS</a>
+    </li>
+</ul>
+    <article>
+    <h1 id="load-balancing-insert-and-update-requests-to-a-http-api-using-spring-integration">Load balancing insert and update requests to a http api using spring-integration</h1>
 
 <h2 id="overview">Overview</h2>
 
@@ -260,7 +257,7 @@
 <p>The domain objects are persisted using JPA and hibernate. Mysql is used as a database. Nothing special here.</p>
 
 
-        <div class="post-tags">
+    <div class="post-tags">
   Tags: 
   
     
@@ -277,7 +274,7 @@
   <a href="/tags/#spring">spring</a>
   
 </div>
-        <div id="disqus_thread"></div>
+    <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'lumue'; // required: replace example with your forum shortname
@@ -290,17 +287,14 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-    </section>
+</article>
     <footer>
-        <p>
-            <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
-            </small>
-        </p>
-        <p>
-            <small><a href="http://lumue.github.io/feed.xml">RSS</a>
-            </small>
-        </p>
-    </footer>
+    <p>
+        <small>
+            Hosted on <a href="http://pages.github.com">GitHub	Pages</a>
+        </small>
+    </p>
+</footer>
 </div>
 <!--[if !IE]>
 <script>fixScale(document);</script><![endif]-->
