@@ -14,6 +14,7 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
+    <link rel="alternate" type="application/rss+xml" title="gosub" href="http://lumue.github.io/feed.xml">
 </head>
 <body>
 <div class="wrapper">
@@ -28,7 +29,7 @@
 
     <p> <ul class="tag-cloud">
     
-    <li class="tag-cloud-item" style="font-size: 87%">
+    <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#java">
             java
         </a>
@@ -58,7 +59,7 @@
         </a>
     </li>
     
-    <li class="tag-cloud-item" style="font-size: 87%">
+    <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#linux">
             linux
         </a>
@@ -166,6 +167,12 @@
         </a>
     </li>
     
+    <li class="tag-cloud-item" style="font-size: 74%">
+        <a href="#gaming">
+            gaming
+        </a>
+    </li>
+    
 </ul></p>
 
     <ul class="button-list">
@@ -188,12 +195,12 @@
 
 </header>
     <section>
-        <p>#Posting svn commit notifications to slack</p>
+        <h1 id="posting-svn-commit-notifications-to-slack">Posting svn commit notifications to slack</h1>
 
 <p>We are trying out <a href="http://www.slack.com">slack</a> as a communication tool at work, and i thought it would be nice to post notifications about commits to our <a href="https://subversion.apache.org">svn</a> repository to the channel i set up for project stuff.  <br />
 So the plan is to setup a <a href="http://svnbook.red-bean.com/de/1.7/svn.ref.reposhooks.post-commit.html">post-commit hook</a>  on the svn host which calls into slacks webapi.</p>
 
-<p>##Posting to the slack webapi</p>
+<h2 id="posting-to-the-slack-webapi">Posting to the slack webapi</h2>
 
 <p>I have already described howto post to slack channels from the shell in <a href="/2015/06/01/posting-to-slack-from-shell.html">another post</a>.  <br />
 To make it easier for to send the commit information to slack, i modified the script from the above mentioned post to accept a svn repo location and a revision number (which is what we get passed into the svn hook handler) instead of the message.<br />
@@ -230,7 +237,7 @@ curl -i -X POST -H <span class="s1">'Accept: application/json'</span> -H <span c
 
 <p>As you can see, there is some converting and replacing magic involved, to end up with a message which curl can hand over as valid json.</p>
 
-<p>##The SVN side</p>
+<h2 id="the-svn-side">The SVN side</h2>
 
 <p>Place the above script in a location where it is callable from svn (e.g. /usr/bin) and give it the appropriate execution rights.</p>
 
@@ -274,6 +281,10 @@ To do this, edit the post-commit script of your repository. Its usually located 
     <footer>
         <p>
             <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+            </small>
+        </p>
+        <p>
+            <small><a href="http://lumue.github.io/feed.xml">RSS</a>
             </small>
         </p>
     </footer>

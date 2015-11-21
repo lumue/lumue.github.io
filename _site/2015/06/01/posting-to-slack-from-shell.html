@@ -14,6 +14,7 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
+    <link rel="alternate" type="application/rss+xml" title="gosub" href="http://lumue.github.io/feed.xml">
 </head>
 <body>
 <div class="wrapper">
@@ -28,7 +29,7 @@
 
     <p> <ul class="tag-cloud">
     
-    <li class="tag-cloud-item" style="font-size: 87%">
+    <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#java">
             java
         </a>
@@ -58,7 +59,7 @@
         </a>
     </li>
     
-    <li class="tag-cloud-item" style="font-size: 87%">
+    <li class="tag-cloud-item" style="font-size: 86%">
         <a href="#linux">
             linux
         </a>
@@ -166,6 +167,12 @@
         </a>
     </li>
     
+    <li class="tag-cloud-item" style="font-size: 74%">
+        <a href="#gaming">
+            gaming
+        </a>
+    </li>
+    
 </ul></p>
 
     <ul class="button-list">
@@ -188,12 +195,12 @@
 
 </header>
     <section>
-        <p>#Posting to slack from shell (using the webapi)</p>
+        <h1 id="posting-to-slack-from-shell-using-the-webapi">Posting to slack from shell (using the webapi)</h1>
 
 <p>We are trying out <a href="http://www.slack.com">slack</a> as a communication tool at work, so i decided to give its webapi a little try.  <br />
 What i want to do, is send a message from the commandline into slack.</p>
 
-<p>##Getting api access to slack</p>
+<h2 id="getting-api-access-to-slack">Getting api access to slack</h2>
 
 <p>Access to slacks web api is authorized by an access token. so we need to obtaion one. to do this, log in to slack and point the browser to <a href="https://api.slack.com/web">slack webapi</a>.<br />
 scroll down, and hit the issue token button.</p>
@@ -202,13 +209,13 @@ scroll down, and hit the issue token button.</p>
 
 <p>you can always go back to the <a href="https://api.slack.com/web">same url</a> to view your token.</p>
 
-<p>##Using the slack api to post</p>
+<h2 id="using-the-slack-api-to-post">Using the slack api to post</h2>
 
-<p>###incoming webhooks</p>
+<h3 id="incoming-webhooks">incoming webhooks</h3>
 
 <p>To post a message to a slack channel, we need to setup an <a href="https://api.slack.com/incoming-webhooks">incoming webhook</a>.</p>
 
-<p>####creating the webhook</p>
+<h4 id="creating-the-webhook">creating the webhook</h4>
 
 <p>In order to do so, navigate to <a href="https://&lt;teamname&gt;.slack.com/services/new/incoming-webhook">new incoming webhook</a>, select in which channel you want the messages to appear, and click the big green button which says “Add incoming WebHooks Integration”. The selected channel is just a default and can be overriden when sending the actual message.</p>
 
@@ -218,7 +225,7 @@ scroll down, and hit the issue token button.</p>
 
 <p><img src="/assets/slack-new-incoming-webhook-result.png" alt="setting up an incoming webhook in slack" /></p>
 
-<p>####testing the webhook</p>
+<h4 id="testing-the-webhook">testing the webhook</h4>
 
 <p>Let’s see if this works:</p>
 
@@ -230,7 +237,7 @@ scroll down, and hit the issue token button.</p>
 
 <p>the username does not have to exist in your slack team.</p>
 
-<p>###roll everything into a friendly bash script</p>
+<h3 id="roll-everything-into-a-friendly-bash-script">roll everything into a friendly bash script</h3>
 
 <p>because i know i will never be able to memorize this call properly we will put this into a shell script i will call “slack_send.sh”. also, it will look cleaner this way when used from the commit-hook script later on.</p>
 
@@ -274,6 +281,10 @@ curl -X POST --data-urlencode <span class="nv">$jsonstring</span> <span class="n
     <footer>
         <p>
             <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+            </small>
+        </p>
+        <p>
+            <small><a href="http://lumue.github.io/feed.xml">RSS</a>
             </small>
         </p>
     </footer>
