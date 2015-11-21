@@ -211,8 +211,8 @@ first with external antennas to connect to the residential community wlan, later
 connected to its lan interfaces is a dsl router, my media center, PCs and network storage.  <br />
 the wlan interface is used as an AP for mobile devices.</p>
 
-<p>##The Plan!<br />
-Whats missing is a tool that lets me “see” what is going on inside my home lan and wlan. who is talking to whom, which machine uses how much bandwidth, etc.   <br />
+<h2 id="the-plan">The Plan!</h2>
+<p>Whats missing is a tool that lets me “see” what is going on inside my home lan and wlan. who is talking to whom, which machine uses how much bandwidth, etc.   <br />
 since the wrt54 is the only device which is connected to lan and wlan, this is where the capturing tool will run. <br />
 for data collection and crunching i plan to use ntop on another box.</p>
 
@@ -223,7 +223,7 @@ for data collection and crunching i plan to use ntop on another box.</p>
 
 <p><img src="/assets/dd-wrt-admin-rflow-section.png" alt="RFlow configuration via dd-wrt web console" /></p>
 
-<p><em>Server ip</em> refers to the ntop host.   <br />
+<p><em>Server ip</em> refers to the ntop host.   
 <em>Port</em> can be any available port on the ntop box.AFAIR there are a few standard ports, and 9996 is apparently one of them.</p>
 
 <p>Save the settings, and the router setup should be complete. easy!</p>
@@ -246,9 +246,9 @@ next is setting up ntop.</p>
 <p>ntop configuration is done in a webui. note that we are doing linux sysadmin stuff, and yet no config file has been touched and no kernel module has been compiled!  <br />
 personally, i dont like all this userfriendliness. kids these days.</p>
 
-<p>the url is <code>http://&lt;ntop-host&gt;:3000</code>.</p>
+<p>the url is <code>http://&lt;ntop-host&gt;:3000</code>.  </p>
 
-<p>to listen for data from the router on port 9996, ntop requires the configuration of a NetFlow Device.</p>
+<p>to listen for data from the router on port 9996, ntop requires the configuration of a NetFlow Device. </p>
 
 <p><img src="/assets/ntop-plugin-menu.png" alt="the NetFlow Device configuration is located under Plugins/NetFlow/Configure" /></p>
 
@@ -258,9 +258,9 @@ personally, i dont like all this userfriendliness. kids these days.</p>
 
 <p><img src="/assets/ntop-netflow-configuration.png" alt="the NetFlow Device configuration form" /></p>
 
-<p><em>NetFlow Device</em> is a name for the device, i used the routers hostname.  <br />
-<em>Local Collector UDP Port</em> the port we want ntop to listen on. it has to be the same as setup for the rflow probe.  <br />
-<em>Virtual NetFlow Interface Network Address</em> ip and netmask of the box hosting the rflow probe.</p>
+<p><em>NetFlow Device</em> is a name for the device, i used the routers hostname.  
+<em>Local Collector UDP Port</em> the port we want ntop to listen on. it has to be the same as setup for the rflow probe.  
+<em>Virtual NetFlow Interface Network Address</em> ip and netmask of the box hosting the rflow probe.  </p>
 
 <p>The last step is switching the nic ntop collects data on to the netflow device.It should be selectable in the admin menu:</p>
 
@@ -271,6 +271,8 @@ personally, i dont like all this userfriendliness. kids these days.</p>
 
         <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#linux">linux</a>,
