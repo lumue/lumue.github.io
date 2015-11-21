@@ -16,8 +16,6 @@ Yay! The google-bot came by for the first time! Over the last days, i did the fo
  * registered the rss feed with feedburner
  * some modifications to page headers
 
-I will likely never find out, what send googles spider my way. But obviously some of the above worked:
+I will likely never find out, what send google's spider my way. But obviously some of the above worked:
 
 ![i can find my blog on google :) ](/assets/noticed_by_google.png)
-
-
