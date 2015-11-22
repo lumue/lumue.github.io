@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  noticed by google
 tags :
  - blogging

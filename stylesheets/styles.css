@@ -1,11 +1,23 @@
 body {
     display: flex;
     flex-flow: row wrap;
+    font-family: Arvo;
+    color: #bbbbbb;
+    background-color: #3c3f41;
+}
+
+a{
+    color: #e8bf6a;
 }
 
 /* We tell all items to be 100% width */
 header, main,  aside, footer {
     flex: 1 100%;
+}
+
+main{
+
+    padding: 10px;
 }
 
 /* We rely on source order for mobile-first approach
