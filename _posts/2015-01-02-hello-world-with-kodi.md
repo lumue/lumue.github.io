@@ -4,6 +4,8 @@ title :  Hello World! with KODI
 tags:
  - python
  - kodi
+ - coding
+update : 2015-11-22 00:00:00
 ---
 
 # "Hello World!" with KODI

@@ -2,8 +2,10 @@
 layout : post
 title : posting svn commit notifications to slack
 tags :
-    - svn
-    - slack
+ - svn
+ - slack
+ - project automation
+update : 2015-11-22 00:00:00
 ---
 
 # Posting svn commit notifications to slack

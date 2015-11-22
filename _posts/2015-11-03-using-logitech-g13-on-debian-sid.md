@@ -4,6 +4,12 @@ title :  Using a Logitech G13 gaming keypad on debian sid
 tags:
  - linux
  - gaming
+ - debian
+ - bash
+ - systemd
+ - g13
+ - sysadmin
+update : 2015-11-22 00:00:00
 ---
 
 # Using a Logitech G13 gaming keypad on debian sid

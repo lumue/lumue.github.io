@@ -2,7 +2,9 @@
 layout : post
 title : Posting to slack from shell
 tags:
-    - slack
+ - slack
+ - bash
+update : 2015-11-22 00:00:00
 ---
 
 # Posting to slack from shell (using the webapi)
