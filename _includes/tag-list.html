@@ -1,6 +1,7 @@
+<h1>tags</h1>
 <ul>
     {% for tag in site.tags %}
-    <li class="tag-cloud-item" style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size | plus: 70  }}%">
+    <li>
         <a href="#{{ tag | first | slugize }}">
             {{ tag | first }}
         </a>
