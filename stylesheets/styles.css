@@ -27,8 +27,7 @@ header, main,  aside, footer {
     /* We invert order of first sidebar and main
      * And tell the main element to take twice as much width as the other two sidebars
      */
-    main { flex: 2 0px; }
-
+    main { flex: 4 0px; }
     aside { order: 1; }
     main    { order: 2; }
     footer  { order: 4; }
