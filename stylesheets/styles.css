@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700,400italic);
+
 body {
     display: flex;
     flex-flow: row wrap;
@@ -8,6 +10,16 @@ body {
 
 a{
     color: #e8bf6a;
+}
+
+article{
+    color: #a9b7ec;
+    background-color: #2b2b2b;
+    font-size: 10pt;
+}
+
+main.h1{
+    color: #235c40;
 }
 
 /* We tell all items to be 100% width */
