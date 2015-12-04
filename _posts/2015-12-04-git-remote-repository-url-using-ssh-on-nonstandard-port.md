@@ -25,7 +25,7 @@ For example if this is the url gogs tells you to use:
 
     git@thegithost:lumue/myrepo.git
 
-This would be the repo url to use for gogs listening on port 10022:
+then this would be the repo url to use for gogs listening on port 10022:
 
     ssh://git@thegithost:10022/lumue/myrepo.git
 
