@@ -21,11 +21,13 @@ To make this work, the repo url that gogs tells you to use, has to be tweaked a 
 
 ## this url works
 
-For example if this is the url gogs tells you:
+For example if this is the url gogs tells you to use:
 
     git@thegithost:lumue/myrepo.git
 
-This is the repo url for the gogs container listening on port 10022:
+This would be the repo url to use for gogs listening on port 10022:
 
     ssh://git@thegithost:10022/lumue/myrepo.git
+
+There might be a way to get gogs to display the correct url to begin with, but for the time being i now have at least this cheatsheet and wont have to go hunting on the internet everytime i clone a new repo :)
 
