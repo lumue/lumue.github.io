@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  git remote repository url using ssh on nonstandard port
 tags :
  - gogs

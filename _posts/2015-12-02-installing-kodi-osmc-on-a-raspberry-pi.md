@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  Installing kodi on a raspberry pi
 tags :
  - kodi
