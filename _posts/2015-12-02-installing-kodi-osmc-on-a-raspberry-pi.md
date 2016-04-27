@@ -6,8 +6,8 @@ tags :
  - osmc
  - linux
  - sysadmin
- - raspberry pi
-        
+ - raspberry-pi
+update : 2016-04-27 20:00:00
 ---
 
 # Installing kodi on a raspberry pi
