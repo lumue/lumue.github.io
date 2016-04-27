@@ -4,4 +4,3 @@ Gemfile.lock
 */*.kate-swp
 .idea
 *.iml
-_site
