@@ -94,6 +94,8 @@ Find out the device name of your sdcard (usually /dev/mmcblk0) and unmount it (i
 </content>
             <pubDate>Wed, 02 Dec 2015 00:00:00 +0100</pubDate>
             
+            <updated>Wed, 27 Apr 2016 22:00:00 +0200</updated>
+            
             <link>http://lumue.github.io/2015/12/02/installing-kodi-osmc-on-a-raspberry-pi.html</link>
             <guid isPermaLink="true">http://lumue.github.io/2015/12/02/installing-kodi-osmc-on-a-raspberry-pi.html</guid>
             
@@ -105,7 +107,7 @@ Find out the device name of your sdcard (usually /dev/mmcblk0) and unmount it (i
             
             <category>sysadmin</category>
             
-            <category>raspberry pi</category>
+            <category>raspberry-pi</category>
             
         </item>
         
