@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title : Packaging a spring-boot application for distribution with docker
 tags:
  - docker

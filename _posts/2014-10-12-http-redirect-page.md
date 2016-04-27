@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title :  A redirect page with fallbacks
 tags:
  - html

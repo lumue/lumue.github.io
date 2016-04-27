@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title : posting svn commit notifications to slack
 tags :
  - svn

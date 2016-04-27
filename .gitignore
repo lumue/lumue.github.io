@@ -1,7 +1,7 @@
 .project
 .settings
 Gemfile.lock
-_site
 */*.kate-swp
 .idea
 *.iml
+_site

@@ -1,5 +1,5 @@
 ---
-layout : layout
+layout : post
 title : Posting to slack from shell
 tags:
  - slack
