@@ -1,0 +1,35 @@
+---
+---
+<!doctype html>
+<html>
+{% include head.html %}
+<body>
+<header>
+    {% include header.html %}
+</header>
+<main>
+    <article>
+    <h2>{{ page.tag }}</h2>
+    <ul>
+        {% for post in page.posts %}
+        <li>
+            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+            <p>({{ post.date | date_to_string }} | Tags: {{ post | tags }})</p>
+        </li>
+        {% endfor %}
+    </ul>
+    </article>
+</main>
+<aside>
+    <nav>
+        {% include nav.html %}
+    </nav>
+</aside>
+<footer>
+    {% include footer.html %}
+</footer>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+{% include google_analytics.html %}
+</body>
+
+</html>

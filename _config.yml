@@ -1,6 +1,8 @@
 name : gosub
 title : gosub
 url : http://lumue.github.io
+
+
 author :
   name : Lutz Müller
   email : mueller.lutz@gmail.com
@@ -10,3 +12,6 @@ author :
 
 kramdown:
   input: GFM
+
+tag_page_layout: tag_page
+tag_page_dir: tag
