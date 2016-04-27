@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>Lumue.github.io by lumue</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="gosub" href="http://lumue.github.io/feed.xml">
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/prism.css">
+	<script src="/javascripts/prism.js"></script>
+</head>
+<body>
+<header>
+    <h1>
+    <a href="/index.html">gosub</a>
+</h1>
+<p>
+    a weblog about computer stuff
+</p>
+
+
+</header>
+<main>
+    <article>
+    <h1 id="installing-kodi-on-a-raspberry-pi">Installing kodi on a raspberry pi</h1>
+
+<p>Howto install an image of the <a href="https://osmc.tv/">osmc</a> <a href="http://kodi.tv">kodi</a> distribution on a raspberry pi using linux.</p>
+
+<h2 id="download-image">download image</h2>
+
+<p>Download the osmc distribution image for raspberry pi and unzip it:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>curl http://download.osmc.tv/installers/diskimages/OSMC_TGT_rbp1_20151129.img.gz
+gunzip OSMC_TGT_vero1_20151129.img.gz
+</code></pre>
+</div>
+
+<p>The exact filename for the current image can be found <a href="http://osmc.tv/download">here</a></p>
+
+<h2 id="copy-image-to-sd-card">copy image to sd card</h2>
+
+<p>This is the short version. More detailed instructions on howto create a bootable sd card from a disk image can be found <a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md">here</a>.
+Find out the device name of your sdcard (usually /dev/mmcblk0) and unmount it (if mounted)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo umount /dev/mmcblk0p1
+</code></pre>
+</div>
+
+<p>Copy the downloaded image to your sdcard and sync it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dd bs=4M if=OSMC_TGT_rbp1_20151129.img of=/dev/mmcblk0 &amp;&amp; sync
+</code></pre>
+</div>
+
+<h2 id="done">done</h2>
+
+<p>insert the sdcard in your raspberry, and boot into osmc.</p>
+
+
+    <div class="post-tags">
+  Tags: 
+  
+  
+  <a href="/tags/#kodi">kodi</a>,
+  
+  <a href="/tags/#osmc">osmc</a>,
+  
+  <a href="/tags/#linux">linux</a>,
+  
+  <a href="/tags/#sysadmin">sysadmin</a>,
+  
+  <a href="/tags/#raspberry pi">raspberry pi</a>
+  
+</div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'lumue'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</article>
+</main>
+<aside>
+    <nav>
+        <section>
+    <h1>me elsewhere</h1>
+    <ul>
+        <li>
+            <a href="https://github.com/lumue">github/lumue</a>
+        </li>
+        <li>
+            <a href="https://twitter.com/lutzmueller" data-show-count="false" data-show-screen-name="false">@lutzmueller</a>
+            <script>
+                !function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = p + '://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+            </script>
+        </li>
+        <li>
+            <a href="http://stackoverflow.com/users/2198786/lumue?tab=profile">stackoverflow/lumue</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h1>tags</h1>
+<ul>
+    
+    <li>
+        <a href="/tag/java.html">
+            java
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/spring-integration.html">
+            spring-integration
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/spring.html">
+            spring
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/coding.html">
+            coding
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/linux.html">
+            linux
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/network.html">
+            network
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/monitoring.html">
+            monitoring
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/dd-wrt.html">
+            dd-wrt
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/sysadmin.html">
+            sysadmin
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/html.html">
+            html
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/python.html">
+            python
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/kodi.html">
+            kodi
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/docker.html">
+            docker
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/devops.html">
+            devops
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/spring-boot.html">
+            spring-boot
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/project automation.html">
+            project automation
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/svn.html">
+            svn
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/slack.html">
+            slack
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/bash.html">
+            bash
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/firebird.html">
+            firebird
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/glassfish.html">
+            glassfish
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/jee.html">
+            jee
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/gaming.html">
+            gaming
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/debian.html">
+            debian
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/systemd.html">
+            systemd
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/g13.html">
+            g13
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/blogging.html">
+            blogging
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/seo.html">
+            seo
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/osmc.html">
+            osmc
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/raspberry pi.html">
+            raspberry pi
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/gogs.html">
+            gogs
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/git.html">
+            git
+        </a>
+    </li>
+    
+</ul>
+</section>
+<section>
+    <a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml">RSS</a>
+</section>
+    </nav>
+</aside>
+<footer>
+    <p>
+    <small>
+        Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+    </small>
+</p>
+
+</footer>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69535101-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

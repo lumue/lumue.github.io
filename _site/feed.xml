@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>gosub</title>
+        <description></description>
+        <link>http://lumue.github.io</link>
+        <atom:link href="http://lumue.github.io/feed.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>git remote repository url using ssh on nonstandard port</title>
+            
+            <content type='html'>&lt;h1 id=&quot;git-remote-repository-url-using-ssh-on-nonstandard-port&quot;&gt;git remote repository url using ssh on nonstandard port&lt;/h1&gt;
+
+&lt;h2 id=&quot;why-would-one-need-this&quot;&gt;why would one need this&lt;/h2&gt;
+
+&lt;p&gt;i run &lt;a href=&quot;https://gogs.io/&quot;&gt;gogs&lt;/a&gt; on a server (dockerized of course ;)  in my home network to share repositories between my laptop and desktop.
+since i still want to be able to ssh in to the server on port 22, i mapped the gogs containers port 22 to 10022 on the docker host.&lt;/p&gt;
+
+&lt;p&gt;To make this work, the repo url that gogs tells you to use, has to be tweaked a little bit.&lt;/p&gt;
+
+&lt;h2 id=&quot;this-url-works&quot;&gt;this url works&lt;/h2&gt;
+
+&lt;p&gt;For example if this is the url gogs tells you to use:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git@thegithost:lumue/myrepo.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;then this would be the repo url to use for gogs listening on port 10022:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh://git@thegithost:10022/lumue/myrepo.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There might be a way to get gogs to display the correct url to begin with, but for the time being i now have at least this cheatsheet and wont have to go hunting on the internet everytime i clone a new repo :)&lt;/p&gt;
+
+</content>
+            <pubDate>Fri, 04 Dec 2015 00:00:00 +0100</pubDate>
+            
+            <link>http://lumue.github.io/2015/12/04/git-remote-repository-url-using-ssh-on-nonstandard-port.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/12/04/git-remote-repository-url-using-ssh-on-nonstandard-port.html</guid>
+            
+            <category>gogs</category>
+            
+            <category>git</category>
+            
+            <category>linux</category>
+            
+            <category>sysadmin</category>
+            
+            <category>coding</category>
+            
+            <category>project automation</category>
+            
+        </item>
+        
+        <item>
+            <title>Installing kodi on a raspberry pi</title>
+            
+            <content type='html'>&lt;h1 id=&quot;installing-kodi-on-a-raspberry-pi&quot;&gt;Installing kodi on a raspberry pi&lt;/h1&gt;
+
+&lt;p&gt;Howto install an image of the &lt;a href=&quot;https://osmc.tv/&quot;&gt;osmc&lt;/a&gt; &lt;a href=&quot;http://kodi.tv&quot;&gt;kodi&lt;/a&gt; distribution on a raspberry pi using linux.&lt;/p&gt;
+
+&lt;h2 id=&quot;download-image&quot;&gt;download image&lt;/h2&gt;
+
+&lt;p&gt;Download the osmc distribution image for raspberry pi and unzip it:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl http://download.osmc.tv/installers/diskimages/OSMC_TGT_rbp1_20151129.img.gz
+gunzip OSMC_TGT_vero1_20151129.img.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The exact filename for the current image can be found &lt;a href=&quot;http://osmc.tv/download&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;copy-image-to-sd-card&quot;&gt;copy image to sd card&lt;/h2&gt;
+
+&lt;p&gt;This is the short version. More detailed instructions on howto create a bootable sd card from a disk image can be found &lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/linux.md&quot;&gt;here&lt;/a&gt;.
+Find out the device name of your sdcard (usually /dev/mmcblk0) and unmount it (if mounted)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo umount /dev/mmcblk0p1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Copy the downloaded image to your sdcard and sync it.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo dd bs=4M if=OSMC_TGT_rbp1_20151129.img of=/dev/mmcblk0 &amp;amp;&amp;amp; sync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;done&quot;&gt;done&lt;/h2&gt;
+
+&lt;p&gt;insert the sdcard in your raspberry, and boot into osmc.&lt;/p&gt;
+
+</content>
+            <pubDate>Wed, 02 Dec 2015 00:00:00 +0100</pubDate>
+            
+            <link>http://lumue.github.io/2015/12/02/installing-kodi-osmc-on-a-raspberry-pi.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/12/02/installing-kodi-osmc-on-a-raspberry-pi.html</guid>
+            
+            <category>kodi</category>
+            
+            <category>osmc</category>
+            
+            <category>linux</category>
+            
+            <category>sysadmin</category>
+            
+            <category>raspberry pi</category>
+            
+        </item>
+        
+        <item>
+            <title>noticed by google</title>
+            
+            <content type='html'>&lt;h1 id=&quot;noticed-by-google&quot;&gt;Noticed by Google&lt;/h1&gt;
+
+&lt;p&gt;Yay! The google bot came by for the first time! Over the last days, i did the following things to lure it here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;added a sitemap&lt;/li&gt;
+  &lt;li&gt;added rss feed&lt;/li&gt;
+  &lt;li&gt;registered the site with google analytics&lt;/li&gt;
+  &lt;li&gt;registered the rss feed with feedburner&lt;/li&gt;
+  &lt;li&gt;some modifications to page headers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I will likely never find out, what send google’s spider my way. But obviously some of the above worked:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/noticed_by_google.png&quot; alt=&quot;i can find my blog on google :) &quot; /&gt;&lt;/p&gt;
+</content>
+            <pubDate>Sun, 22 Nov 2015 00:00:00 +0100</pubDate>
+            
+            <link>http://lumue.github.io/2015/11/22/noticed-by-google.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/11/22/noticed-by-google.html</guid>
+            
+            <category>blogging</category>
+            
+            <category>seo</category>
+            
+        </item>
+        
+        <item>
+            <title>Using a Logitech G13 gaming keypad on debian sid</title>
+            
+            <content type='html'>&lt;h1 id=&quot;using-a-logitech-g13-gaming-keypad-on-debian-sid&quot;&gt;Using a Logitech G13 gaming keypad on debian sid&lt;/h1&gt;
+
+&lt;p&gt;This is a short HOWTO on setting up g13d as a systemd controlled service on debian linux.&lt;br /&gt;
+If you just want to use your g13 and dont care about how it is done, fair enough: I compiled what is described here into a bunch of shell scripts ready to checkout and execute for you from &lt;a href=&quot;https://github.com/lumue/g13d-service&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;checkout-and-build&quot;&gt;checkout and build&lt;/h2&gt;
+
+&lt;p&gt;go to &lt;a href=&quot;https://github.com/ecraven/g13&quot;&gt;https://github.com/ecraven/g13&lt;/a&gt;, checkout their repo and follow the installation instructions.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;    git clone https://github.com/ecraven/g13.git
+ &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;g13
+ make
+    &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;installation&lt;/h2&gt;
+
+&lt;p&gt;copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;g13d&lt;/code&gt; binary to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/g13d&lt;/code&gt; or make it otherwise accesible on your path.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo cp g13d /usr/bin/g13d &amp;amp;&amp;amp; sudo chmod a+x /usr/bin/g13d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;create a start script g13d-run to init the bindings and start g13d and put it in &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo touch /usr/bin/g13d-run &amp;amp;&amp;amp; sudo chmod a+x/usr/bing13d-run
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;open the file and paste the following script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;G13D_WORK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/tmp/g13d&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -d G13D_WORK &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;using existing &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$G13D_WORK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; as working directory ...&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;creating &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$G13D_WORK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; as working directory ...&quot;&lt;/span&gt;
+    mkdir &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$G13D_WORK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi
+
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$G13D_WORK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+cat /etc/g13d.d/default.bind &amp;gt;&amp;gt; /tmp/g13-0
+/usr/bin/g13d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;setup-systemd-service&quot;&gt;setup systemd service&lt;/h3&gt;
+
+&lt;p&gt;create a start script for the service named &lt;code class=&quot;highlighter-rouge&quot;&gt;g13d-service&lt;/code&gt; and save it in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo touch /etc/init.d/g13d-service &amp;amp;&amp;amp; sudo chmod a+x /etc/init.d/g13d-service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;open the file and paste the following script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;G13D_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/usr/lib/g13d&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;get_pid &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nv&quot;&gt;PID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;pidof g13d&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;stop &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   get_pid
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;server is not running.&quot;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+   &lt;span class=&quot;k&quot;&gt;else
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -n &lt;span class=&quot;s2&quot;&gt;&quot;Stopping server..&quot;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -9 &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;
+      sleep 1
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.. Done.&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;start &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   get_pid
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;Starting server..&quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;/usr/bin/g13d-run &amp;amp;&amp;gt; /dev/null  &amp;amp;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &amp;amp;
+      get_pid
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Done. PID=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;else
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;server is already running, PID=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;restart &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;Restarting server..&quot;&lt;/span&gt;
+   get_pid
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+      &lt;/span&gt;start
+   &lt;span class=&quot;k&quot;&gt;else
+      &lt;/span&gt;stop
+      sleep 5
+      start
+   &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;status &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   get_pid
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z  &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Server is not running.&quot;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+   &lt;span class=&quot;k&quot;&gt;else
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Server is running, PID=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in
+   &lt;/span&gt;start&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      start
+   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+   stop&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      stop
+   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+   restart&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      restart
+   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+   status&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      status
+   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Usage: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; {start|stop|restart|status}&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;create a systemd .service script for the service named &lt;code class=&quot;highlighter-rouge&quot;&gt;g13d-service.service&lt;/code&gt; and save it in &lt;code class=&quot;highlighter-rouge&quot;&gt;/lib/systemd/g13d-service.service&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo touch /lib/systemd/g13d-service.service &amp;amp;&amp;amp; sudo chmod a+x /lib/systemd/g13d-service.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;open the file and paste the following script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
+Description=Start g13d-service
+
+[Service]
+WorkingDirectory=/tmp/g13d
+Type=forking
+ExecStart=/bin/bash /etc/init.d/g13d-service start
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;setup-default-bindings&quot;&gt;setup default bindings&lt;/h3&gt;
+
+&lt;p&gt;create a directory &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/g13d.d&lt;/code&gt; and put your bindings in a file named &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/g13d.d/default.bind&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;my bindings file looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bind G1 KEY_F1
+bind G2 KEY_F2
+bind G3 KEY_F3
+bind G4 KEY_F4
+bind G5 KEY_F5
+bind G6 KEY_F6
+bind G7 KEY_F7
+bind G8 KEY_1 
+bind G9 KEY_2
+bind G10 KEY_3
+bind G11 KEY_4
+bind G12 KEY_5
+bind G13 KEY_6
+bind G14 KEY_7
+bind G15 KEY_8
+bind G16 KEY_9
+bind G17 KEY_0
+bind G18 KEY_F8
+bind G19 KEY_F9
+bind G20 KEY_F10
+bind G21 KEY_F11
+bind G22 KEY_TAB
+bind DOWN KEY_LEFTALT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now execute&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl daemon-reload
+sudo systemctl enable g13d-service.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;to install the service, and we are done!&lt;/p&gt;
+
+&lt;h2 id=&quot;running&quot;&gt;Running&lt;/h2&gt;
+
+&lt;p&gt;Now you can control g13d like any other service on your box. just issue&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl status g13d-service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;to start the service.&lt;/p&gt;
+
+</content>
+            <pubDate>Tue, 03 Nov 2015 00:00:00 +0100</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2015/11/03/using-logitech-g13-on-debian-sid.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/11/03/using-logitech-g13-on-debian-sid.html</guid>
+            
+            <category>linux</category>
+            
+            <category>gaming</category>
+            
+            <category>debian</category>
+            
+            <category>bash</category>
+            
+            <category>systemd</category>
+            
+            <category>g13</category>
+            
+            <category>sysadmin</category>
+            
+        </item>
+        
+        <item>
+            <title>Deploying jee webapplication and rdbms with docker</title>
+            
+            <content type='html'>&lt;h1 id=&quot;deploying-jee-webapplication-and-rdbms-with-docker&quot;&gt;Deploying jee webapplication and rdbms with docker&lt;/h1&gt;
+
+&lt;p&gt;I plan to migrate a testing environment comprised of a few jee webapps running on glassfish and connecting to a firebird database to a set of docker containers.
+I tried this for one of the application, and here is how it can be done:&lt;/p&gt;
+
+&lt;h2 id=&quot;what-will-be-deployed&quot;&gt;What will be deployed&lt;/h2&gt;
+
+&lt;p&gt;Deployment consists of&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;war packaged java webapp&lt;/li&gt;
+  &lt;li&gt;glassfish jee container&lt;/li&gt;
+  &lt;li&gt;firebird database server&lt;/li&gt;
+  &lt;li&gt;datacontainer with prefilled firebird db volume (for testing)&lt;/li&gt;
+  &lt;li&gt;datacontainer with prefilled application working directory (for testing)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;application-state-in-a-container&quot;&gt;Application state in a container&lt;/h2&gt;
+
+&lt;p&gt;To setup testing and demo environments it will be useful to have a set of known application states versioned and instantly deployable.
+The docker solution to this seems to be setting up  a datacontainer as described &lt;a href=&quot;https://docs.docker.com/userguide/dockervolumes/&quot;&gt;here&lt;/a&gt;.
+Since the application i try to deploy here stores its state in the database and in a working directory, we want to fit both in the same container image.&lt;/p&gt;
+
+&lt;p&gt;It is recommended to use the same base image for data containers that is used in the other containers which make up your deployment.
+This will save you some diskspace, but other than that its irrelevant what you use.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://github.com/jacobalberty/firebird-docker/blob/master/2.5-ss/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt; for jacobalberty/firebird:2.5-ss reveals the base image used:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;FROM debian:jessie&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We want our image to expose two volumes. one for database file(s), and one for the work directory.
+The Dockerfile below can be used to build this image.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/lumue/6c88a753403b9fe0eaee.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It shall be named appdata, for it stores appdata!
+to build and run this image execute&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker build -t &amp;lt;your_repo&amp;gt;/appdata .
+docker -d --name appdata &amp;lt;your_repo&amp;gt;/appdata&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;check the result by running &lt;code class=&quot;highlighter-rouge&quot;&gt;docker ps&lt;/code&gt;. if all went well you should see output like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;CONTAINER ID        IMAGE                      COMMAND             CREATED             STATUS              PORTS               NAMES
+55c6523c4307        18384fe4a822....e558e295   &lt;span class=&quot;s2&quot;&gt;&quot;/bin/bash&quot;&lt;/span&gt;         21 minutes ago      Up 18 minutes                           appdata&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;which means our datacontainer is up and running.&lt;/p&gt;
+
+&lt;h2 id=&quot;databaseserver&quot;&gt;Databaseserver&lt;/h2&gt;
+
+&lt;h3 id=&quot;getting-the-image&quot;&gt;getting the image&lt;/h3&gt;
+
+&lt;p&gt;We will use the firebird 2.5 superserver docker image from &lt;a href=&quot;https://hub.docker.com/r/jacobalberty/firebird/&quot;&gt;jacobalberty/firebird&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker pull jacobalberty/firebird:2.5-ss&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;running-the-container&quot;&gt;running the container&lt;/h3&gt;
+
+&lt;p&gt;For a production deployment we would map the exposed database volume to a path in the hosts filesystem (in this case &lt;code class=&quot;highlighter-rouge&quot;&gt;/data/firebird/databases&lt;/code&gt;). The image also exposes firebirds default port 3050. We will not expose it on the host machine, but instead build a connection between webapp and   database images later.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker run -d --name firebird -v /data/firebird/databases:/databases jacobalberty/firebird:2.5-ss&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;But what we want to do is use our datacontainer “appdata” to store the database files. To tell docker about it we have to use the –volumes-from flag when starting the firebird image:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker run -d --name firebird --volumes-from appdata jacobalberty/firebird:2.5-ss&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;you can verify that the firebird container uses volumes from appdata by attaching to both containers and writing to the /databases directory.
+if everything is working as planned, you should see the same content in both containers.&lt;/p&gt;
+
+&lt;h2 id=&quot;application-and-applicationserver&quot;&gt;Application and Applicationserver&lt;/h2&gt;
+
+&lt;h3 id=&quot;creating-the-image&quot;&gt;creating the image&lt;/h3&gt;
+
+&lt;p&gt;To setup the image for glassfish4 plus webapp, we use a custom shell script and a slightly modified version of the official glassfish Dockerfile from docker hub.
+both are displayed below.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/lumue/7f88d5e0c54db75c5e70.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Lets see whats happening:&lt;/p&gt;
+
+&lt;h4 id=&quot;the-buildsh-script&quot;&gt;The build.sh script&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;template domain is packed into a .jar file&lt;/li&gt;
+  &lt;li&gt;docker build is executed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;in-the-dockerfile&quot;&gt;In the Dockerfile&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;glassfish is downloaded and installed (same as in the official image)&lt;/li&gt;
+  &lt;li&gt;.jar file with template domain is added to the image&lt;/li&gt;
+  &lt;li&gt;password.txt file containing the admin password is added&lt;/li&gt;
+  &lt;li&gt;glassfish domain named webapp is created from the template-domain&lt;/li&gt;
+  &lt;li&gt;the domain is started to execute the enable-security-admin command and stopped again&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+            <pubDate>Fri, 30 Oct 2015 00:00:00 +0100</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2015/10/30/docker-fullstack-deployment.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/10/30/docker-fullstack-deployment.html</guid>
+            
+            <category>linux</category>
+            
+            <category>docker</category>
+            
+            <category>firebird</category>
+            
+            <category>glassfish</category>
+            
+            <category>devops</category>
+            
+            <category>jee</category>
+            
+            <category>java</category>
+            
+            <category>coding</category>
+            
+            <category>project automation</category>
+            
+        </item>
+        
+        <item>
+            <title>Posting to slack from shell</title>
+            
+            <content type='html'>&lt;h1 id=&quot;posting-to-slack-from-shell-using-the-webapi&quot;&gt;Posting to slack from shell (using the webapi)&lt;/h1&gt;
+
+&lt;p&gt;We are trying out &lt;a href=&quot;http://www.slack.com&quot;&gt;slack&lt;/a&gt; as a communication tool at work, so i decided to give its webapi a little try.&lt;br /&gt;
+What i want to do, is send a message from the commandline into slack.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-api-access-to-slack&quot;&gt;Getting api access to slack&lt;/h2&gt;
+
+&lt;p&gt;Access to slacks web api is authorized by an access token. so we need to obtaion one. to do this, log in to slack and point the browser to &lt;a href=&quot;https://api.slack.com/web&quot;&gt;slack webapi&lt;/a&gt;.
+scroll down, and hit the issue token button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/slack-get-token-screen.png&quot; alt=&quot;creating the webapi token&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;you can always go back to the &lt;a href=&quot;https://api.slack.com/web&quot;&gt;same url&lt;/a&gt; to view your token.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-the-slack-api-to-post&quot;&gt;Using the slack api to post&lt;/h2&gt;
+
+&lt;h3 id=&quot;incoming-webhooks&quot;&gt;incoming webhooks&lt;/h3&gt;
+
+&lt;p&gt;To post a message to a slack channel, we need to setup an &lt;a href=&quot;https://api.slack.com/incoming-webhooks&quot;&gt;incoming webhook&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;creating-the-webhook&quot;&gt;creating the webhook&lt;/h4&gt;
+
+&lt;p&gt;In order to do so, navigate to &lt;a href=&quot;https://&amp;lt;teamname&amp;gt;.slack.com/services/new/incoming-webhook&quot;&gt;new incoming webhook&lt;/a&gt;, select in which channel you want the messages to appear, and click the big green button which says “Add incoming WebHooks Integration”. The selected channel is just a default and can be overriden when sending the actual message.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/slack-new-incoming-webhook-screen.png&quot; alt=&quot;setting up an incoming webhook in slack&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The URL of the created webhook is shown on th resulting page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/slack-new-incoming-webhook-result.png&quot; alt=&quot;setting up an incoming webhook in slack&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;testing-the-webhook&quot;&gt;testing the webhook&lt;/h4&gt;
+
+&lt;p&gt;Let’s see if this works:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -X POST --data-urlencode &lt;span class=&quot;s1&quot;&gt;&#39;payload={&quot;token&quot;:&quot;&amp;lt;your-token-here&amp;gt;&quot;,&quot;channel&quot;: &quot;#korona-resource&quot;,&quot;username&quot;: &quot;lumue&quot;,&quot;text&quot;: &quot;This is posted to #korona-resource from lm&quot;,&quot;icon_emoji&quot;: &quot;:ghost:&quot;}&#39;&lt;/span&gt; https://&amp;lt;your-incoming-webhook-url-here&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;if everything works as it should, you should see this testmessage  displayed in the selected channel:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/slack-view-testpost.png&quot; alt=&quot;setting up an incoming webhook in slack&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;the username does not have to exist in your slack team.&lt;/p&gt;
+
+&lt;h3 id=&quot;roll-everything-into-a-friendly-bash-script&quot;&gt;roll everything into a friendly bash script&lt;/h3&gt;
+
+&lt;p&gt;because i know i will never be able to memorize this call properly we will put this into a shell script i will call “slack_send.sh”. also, it will look cleaner this way when used from the commit-hook script later on.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#these have to be setup via slack&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;api_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;your-token-here&amp;gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://&amp;lt;your-webhook-url-here&amp;gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#commandline parameter&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$3&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#assemble json payload&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;jsonstring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&#39;payload={&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$api_token&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$channel&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$username&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;icon_emoji&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:ghost:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;}&#39;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#call curl&lt;/span&gt;
+curl -X POST --data-urlencode &lt;span class=&quot;nv&quot;&gt;$jsonstring&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$url&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</content>
+            <pubDate>Mon, 01 Jun 2015 00:00:00 +0200</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2015/06/01/posting-to-slack-from-shell.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/06/01/posting-to-slack-from-shell.html</guid>
+            
+            <category>slack</category>
+            
+            <category>bash</category>
+            
+        </item>
+        
+        <item>
+            <title>posting svn commit notifications to slack</title>
+            
+            <content type='html'>&lt;h1 id=&quot;posting-svn-commit-notifications-to-slack&quot;&gt;Posting svn commit notifications to slack&lt;/h1&gt;
+
+&lt;p&gt;We are trying out &lt;a href=&quot;http://www.slack.com&quot;&gt;slack&lt;/a&gt; as a communication tool at work, and i thought it would be nice to post notifications about commits to our &lt;a href=&quot;https://subversion.apache.org&quot;&gt;svn&lt;/a&gt; repository to the channel i set up for project stuff.&lt;br /&gt;
+So the plan is to setup a &lt;a href=&quot;http://svnbook.red-bean.com/de/1.7/svn.ref.reposhooks.post-commit.html&quot;&gt;post-commit hook&lt;/a&gt;  on the svn host which calls into slacks webapi.&lt;/p&gt;
+
+&lt;h2 id=&quot;posting-to-the-slack-webapi&quot;&gt;Posting to the slack webapi&lt;/h2&gt;
+
+&lt;p&gt;I have already described howto post to slack channels from the shell in &lt;a href=&quot;/2015/06/01/posting-to-slack-from-shell.html&quot;&gt;another post&lt;/a&gt;.&lt;br /&gt;
+To make it easier for to send the commit information to slack, i modified the script from the above mentioned post to accept a svn repo location and a revision number (which is what we get passed into the svn hook handler) instead of the message.
+Also the user and channel name are fix.&lt;/p&gt;
+
+&lt;p&gt;Now it looks like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#these have to be obtained from slack&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;api_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;your slack webapi token&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://your webhook url&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;svnbot&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#korona-resource&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#commandline parameter&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;revision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#build message&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;svn log --revision &lt;span class=&quot;nv&quot;&gt;$revision&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt; | iconv -f iso8859-1 -t ascii//translit&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt; | sed &lt;span class=&quot;s2&quot;&gt;&quot;s/&#39;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\\\\&#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/g&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//--/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//|/\\n&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#build json&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;jsonstring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$api_token&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$channel&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$username&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;icon_emoji&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:ghost:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;}&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$jsonstring&lt;/span&gt; &amp;gt; /tmp/slack_git_msg
+
+&lt;span class=&quot;c&quot;&gt;#call curl&lt;/span&gt;
+curl -i -X POST -H &lt;span class=&quot;s1&quot;&gt;&#39;Accept: application/json&#39;&lt;/span&gt; -H &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json; charset=ascii&quot;&lt;/span&gt;  --data @/tmp/slack_git_msg &lt;span class=&quot;nv&quot;&gt;$url&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As you can see, there is some converting and replacing magic involved, to end up with a message which curl can hand over as valid json.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-svn-side&quot;&gt;The SVN side&lt;/h2&gt;
+
+&lt;p&gt;Place the above script in a location where it is callable from svn (e.g. /usr/bin) and give it the appropriate execution rights.&lt;/p&gt;
+
+&lt;p&gt;Next we have to tell svn to call the script and pass it the correct parameters after each commit to our repository(-branch).&lt;br /&gt;
+To do this, edit the post-commit script of your repository. Its usually located in &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path-to-repo&amp;gt;/hooks/post-commit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Add the following lines:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -n &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;svnlook changed &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REPOS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; -r &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REV&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; | grep &amp;lt;branchname&amp;gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  /usr/bin/slack_send_svnlog.sh &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REPOS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REV&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And we are done here. A commit should now produce a post displaying the commit message in the selected slack channel:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/slack-svn-post-screen.png&quot; alt=&quot;your commit message in slack&quot; /&gt;&lt;/p&gt;
+</content>
+            <pubDate>Mon, 01 Jun 2015 00:00:00 +0200</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2015/06/01/posting-svn-commit-notifications-to-slack.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/06/01/posting-svn-commit-notifications-to-slack.html</guid>
+            
+            <category>svn</category>
+            
+            <category>slack</category>
+            
+            <category>project automation</category>
+            
+        </item>
+        
+        <item>
+            <title>Packaging a spring-boot application for distribution with docker</title>
+            
+            <content type='html'>&lt;h1 id=&quot;packaging-a-spring-boot-application-for-distribution&quot;&gt;Packaging a spring-boot application for distribution&lt;/h1&gt;
+
+&lt;h2 id=&quot;but-how&quot;&gt;But how&lt;/h2&gt;
+
+&lt;p&gt;Over the last couple of weeks i built a little &lt;a href=&quot;https://github.com/lumue/getdown&quot;&gt;web application&lt;/a&gt; which allows for downloading files to a server. think headless version of jdownloader. because i wanted to try out some stuff like spring-boot,reactor,webcomponents, papyrus, websockets. and because i had use for a headless version of jdownloader.&lt;br /&gt;
+Anyway, it’s ready now for installation, and i want to package the application jar along with a script which allows it to run as a service and an external config file.
+But it turns out, imho, there is no really clean and portable way of doing so.&lt;/p&gt;
+
+&lt;h2 id=&quot;docker&quot;&gt;Docker!&lt;/h2&gt;
+
+&lt;p&gt;So i am going to do this with &lt;a href=&quot;https://www.docker.com/&quot;&gt;docker&lt;/a&gt;. which seems to be the hip way to do it nowadays anyway.&lt;br /&gt;
+And it turns out, there are even docker plugins for &lt;a href=&quot;https://github.com/spotify/docker-maven-plugin&quot;&gt;maven&lt;/a&gt; and &lt;a href=&quot;https://github.com/Transmode/gradle-docker&quot;&gt;gradle&lt;/a&gt; which let you build an docker image from a Dockerfile. Yay!&lt;br /&gt;
+As you see, this is really easy to accomplish, and as a bonus you get to control the environment your app is deployed in.&lt;br /&gt;
+which translates for me to: Java 8 anywhere :)&lt;br /&gt;
+Deploying to any major PaaS provider should theoretically work too.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-it-looked-like&quot;&gt;What it looked like&lt;/h2&gt;
+
+&lt;h3 id=&quot;buildgradle&quot;&gt;build.gradle&lt;/h3&gt;
+
+&lt;p&gt;add this to build.gradle&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span class=&quot;n&quot;&gt;buildscript&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    	&lt;span class=&quot;n&quot;&gt;classpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;se.transmode.gradle:gradle-docker:1.2&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;docker&#39;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;somehost:5000&#39;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//your docker registry location&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;buildDocker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Docker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;dependsOn:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;applicationName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;baseName&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;dockerfile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;src/main/docker/Dockerfile&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;doFirst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jar&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stageDir&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;dockerfile&quot;&gt;Dockerfile&lt;/h2&gt;
+
+&lt;p&gt;and the Dockerfile for my application lives ins &lt;code class=&quot;highlighter-rouge&quot;&gt;src/main/docker/&lt;/code&gt; and looks like this :&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;FROM jeanblanchard/busybox-java:8
+MAINTAINER lm &quot;lm@combase.de&quot;
+
+ADD getdown-app-springboot.jar app.jar
+RUN touch /app.jar
+CMD mkdir /media
+ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</content>
+            <pubDate>Fri, 27 Mar 2015 00:00:00 +0100</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2015/03/27/spring-boot-distribution-archive.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/03/27/spring-boot-distribution-archive.html</guid>
+            
+            <category>docker</category>
+            
+            <category>java</category>
+            
+            <category>devops</category>
+            
+            <category>spring</category>
+            
+            <category>spring-boot</category>
+            
+            <category>coding</category>
+            
+            <category>project automation</category>
+            
+        </item>
+        
+        <item>
+            <title>Hello World! with KODI</title>
+            
+            <content type='html'>&lt;h1 id=&quot;hello-world-with-kodi&quot;&gt;“Hello World!” with KODI&lt;/h1&gt;
+
+&lt;p&gt;I wanted to use the last couple of days before its back to work to take a brief look into the world of xbmc (now KODI!) addon development.&lt;br /&gt;
+This post describes how one goes about writing and running the obligatory “hello world!” program with KODI.&lt;br /&gt;
+The addon language of choice in KODI world is python, and it brings its own interpreter. I will use pycharm as an IDE.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/kodi-hello-world-at-runtime.png&quot; alt=&quot;KODI says &amp;quot;hello world!&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-you-need&quot;&gt;What you need&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://kodi.tv&quot;&gt;KODI&lt;/a&gt; - A media center software which will act as the addons host. howto install KODI in your linux distro of choice is described &lt;a href=&quot;http://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A Texteditor or IDE. Popular ones for Python are &lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt;, Jetbrains take at a Python IDE, or the Eclipse based &lt;a href=&quot;http://pydev.org/&quot;&gt;PyDev&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://kodi.wiki&quot;&gt;xbmcstubs&lt;/a&gt; - a set of python files which provide method stubs for the libraries included in KODI’s python interpreter.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;other-useful-resources&quot;&gt;Other useful resources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://kodi.wiki/view/HOW-TO:HelloWorld_addon&quot;&gt;HOW-TO:HelloWorld addon&lt;/a&gt; on &lt;a href=&quot;http://kodi.wiki&quot;&gt;KODI wiki&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://kodi.wiki/view/Audio/video_add-on_tutorial#Hello.2C_World.21&quot;&gt;Audio/video add-on tutorial&lt;/a&gt; on KODI wiki.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-do-it&quot;&gt;How to do it&lt;/h2&gt;
+
+&lt;h3 id=&quot;project-structure&quot;&gt;Project structure&lt;/h3&gt;
+
+&lt;p&gt;The addon directory must have the same name as the addon itself, which will be named &lt;code class=&quot;highlighter-rouge&quot;&gt;io.github.lumue.xbmc.hello&lt;/code&gt;.&lt;br /&gt;
+to be available to KODI it must be placed in &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.kodi/addons&lt;/code&gt; and  contain at least these two files:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;addon.xml&lt;/code&gt; addon metadata&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;addon.py&lt;/code&gt; the addon python script&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/kodi-hello-world-project-structure.png&quot; alt=&quot;the addon directory layout shown in pycharm&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;addonxml&quot;&gt;addon.xml&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;addon&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;io.github.lumue.xbmc.hello&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;provider-name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lumue&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;requires&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;import&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;addon=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xbmc.python&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2.14.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/requires&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;extension&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;point=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xbmc.python.pluginsource&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;library=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;addon.py&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;provides&amp;gt;&lt;/span&gt;executable&lt;span class=&quot;nt&quot;&gt;&amp;lt;/provides&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/extension&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;extension&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;point=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xbmc.addon.metadata&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;summary&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Hello World&lt;span class=&quot;nt&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;description&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;a &quot;Hello World&quot; addon&lt;span class=&quot;nt&quot;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;disclaimer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/disclaimer&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;language&amp;gt;&amp;lt;/language&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;platform&amp;gt;&lt;/span&gt;all&lt;span class=&quot;nt&quot;&gt;&amp;lt;/platform&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;license&amp;gt;&amp;lt;/license&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;forum&amp;gt;&amp;lt;/forum&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;website&amp;gt;&amp;lt;/website&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;email&amp;gt;&lt;/span&gt;mueller.lutz@gmail.com&lt;span class=&quot;nt&quot;&gt;&amp;lt;/email&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;source&amp;gt;&amp;lt;/source&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/extension&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/addon&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;addonpy&quot;&gt;addon.py&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;xbmcaddon&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;xbmcgui&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;xbmcgui&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</content>
+            <pubDate>Fri, 02 Jan 2015 00:00:00 +0100</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2015/01/02/hello-world-with-kodi.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2015/01/02/hello-world-with-kodi.html</guid>
+            
+            <category>python</category>
+            
+            <category>kodi</category>
+            
+            <category>coding</category>
+            
+        </item>
+        
+        <item>
+            <title>A redirect page with fallbacks</title>
+            
+            <content type='html'>&lt;h1 id=&quot;a-template-html5-redirect-page&quot;&gt;A Template HTML5 redirect page&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Page Title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+  
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Refresh&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0; url=target.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- If the meta tag doesn&#39;t work, try JavaScript to redirect. --&amp;gt;&lt;/span&gt;
+  
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;target.html&quot;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- If JavaScript doesn&#39;t work, give a link to click on to redirect. --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+      If you are not redirected automatically, click &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;target.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;here&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</content>
+            <pubDate>Sun, 12 Oct 2014 00:00:00 +0200</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2014/10/12/http-redirect-page.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2014/10/12/http-redirect-page.html</guid>
+            
+            <category>html</category>
+            
+            <category>coding</category>
+            
+        </item>
+        
+        <item>
+            <title>running ntopng on ubuntu 14.04</title>
+            
+            <content type='html'>&lt;h1 id=&quot;running-ntopng-on-ubuntu-1404&quot;&gt;running ntopng on ubuntu 14.04&lt;/h1&gt;
+
+&lt;h2 id=&quot;starting-nprobe&quot;&gt;starting nprobe&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+sudo nprobe --zmq tcp://*:5556 -i none -n none -b 2 -3 9996 -G
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-ntopng&quot;&gt;starting ntopng&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+sudo ntopng -i tcp://127.0.0.1:5556 -e -F
+&lt;/code&gt;&lt;/p&gt;
+</content>
+            <pubDate>Sun, 31 Aug 2014 00:00:00 +0200</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2014/08/31/running-ntopng-with-nprobe-as-netflow-collector.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2014/08/31/running-ntopng-with-nprobe-as-netflow-collector.html</guid>
+            
+            <category>linux</category>
+            
+            <category>network</category>
+            
+            <category>monitoring</category>
+            
+            <category>sysadmin</category>
+            
+        </item>
+        
+        <item>
+            <title>LAN Traffic monitoring with dd-wrt</title>
+            
+            <content type='html'>&lt;h1 id=&quot;lan-traffic-monitoring-with-dd-wrt&quot;&gt;LAN Traffic monitoring with dd-wrt&lt;/h1&gt;
+
+&lt;h2 id=&quot;my-setup&quot;&gt;My setup&lt;/h2&gt;
+&lt;p&gt;I use an ancient wrt54 running dd-wrt to keep our home devices connected. it has no fancy gbit interfaces or super fast wlan, but aside from the occasional dhcpd crash, it is really a reliable little box. 
+i think i have used it for over 9 years now.&lt;br /&gt;
+first with external antennas to connect to the residential community wlan, later when i switched to a dsl land line, i started to use it as my home router and wifi accesspoint..&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/wrt54.jpg&quot; alt=&quot;Linksys WRT-54G&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The firmware i am using is &lt;a href=&quot;www.dd-wrt.com&quot;&gt;dd-wrt&lt;/a&gt;.&lt;br /&gt;
+connected to its lan interfaces is a dsl router, my media center, PCs and network storage.&lt;br /&gt;
+the wlan interface is used as an AP for mobile devices.&lt;/p&gt;
+
+&lt;p&gt;##The Plan!
+Whats missing is a tool that lets me “see” what is going on inside my home lan and wlan. who is talking to whom, which machine uses how much bandwidth, etc. &lt;br /&gt;
+since the wrt54 is the only device which is connected to lan and wlan, this is where the capturing tool will run. 
+for data collection and crunching i plan to use ntop on another box.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-do-it&quot;&gt;How to do it&lt;/h2&gt;
+
+&lt;h3 id=&quot;setting-up-the-rflow-probe&quot;&gt;Setting up the RFlow probe&lt;/h3&gt;
+&lt;p&gt;The probing can be activated in dd-wrt’s web console. The RFlow section is located under services and looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/dd-wrt-admin-rflow-section.png&quot; alt=&quot;RFlow configuration via dd-wrt web console&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Server ip&lt;/em&gt; refers to the ntop host. &lt;br /&gt;
+&lt;em&gt;Port&lt;/em&gt; can be any available port on the ntop box.AFAIR there are a few standard ports, and 9996 is apparently one of them.&lt;/p&gt;
+
+&lt;p&gt;Save the settings, and the router setup should be complete. easy!&lt;/p&gt;
+
+&lt;h3 id=&quot;ntop&quot;&gt;ntop&lt;/h3&gt;
+
+&lt;h4 id=&quot;installation&quot;&gt;Installation&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lm@voyager3:~$ sudo apt-get install ntop*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The installation routine asks for a &lt;em&gt;network interface&lt;/em&gt; to listen on. “none” since the network traffic will be probed somewhere else. next you have to choose a &lt;em&gt;password&lt;/em&gt; for ntops webinterface.&lt;/p&gt;
+
+&lt;p&gt;The designated ntop host is a box running ubuntu 14.04. i use apt-get to install all packages ntop. and again no errors, faults or exception. not even a lowly warning.
+almost to easy to blog :D but its not done until its in production as they say.&lt;br /&gt;
+next is setting up ntop.&lt;/p&gt;
+
+&lt;h4 id=&quot;setup&quot;&gt;Setup&lt;/h4&gt;
+
+&lt;p&gt;ntop configuration is done in a webui. note that we are doing linux sysadmin stuff, and yet no config file has been touched and no kernel module has been compiled!&lt;br /&gt;
+personally, i dont like all this userfriendliness. kids these days.&lt;/p&gt;
+
+&lt;p&gt;the url is &lt;code class=&quot;highlighter-rouge&quot;&gt;http://&amp;lt;ntop-host&amp;gt;:3000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;to listen for data from the router on port 9996, ntop requires the configuration of a NetFlow Device.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ntop-plugin-menu.png&quot; alt=&quot;the NetFlow Device configuration is located under Plugins/NetFlow/Configure&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;the NetFlow Device configuration is located under Plugins/NetFlow/Configure.&lt;/p&gt;
+
+&lt;p&gt;The first three attributes were all i had to change:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ntop-netflow-configuration.png&quot; alt=&quot;the NetFlow Device configuration form&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;NetFlow Device&lt;/em&gt; is a name for the device, i used the routers hostname.&lt;br /&gt;
+&lt;em&gt;Local Collector UDP Port&lt;/em&gt; the port we want ntop to listen on. it has to be the same as setup for the rflow probe.&lt;br /&gt;
+&lt;em&gt;Virtual NetFlow Interface Network Address&lt;/em&gt; ip and netmask of the box hosting the rflow probe.&lt;/p&gt;
+
+&lt;p&gt;The last step is switching the nic ntop collects data on to the netflow device.It should be selectable in the admin menu:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ntop-switch-nic.png&quot; alt=&quot;the NetFlow Device configuration form&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And its done! Data is streaming in and the statistics are filling up.&lt;/p&gt;
+
+</content>
+            <pubDate>Fri, 22 Aug 2014 00:00:00 +0200</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2014/08/22/ddwrt-rflow-ntop-networkmonitoring.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2014/08/22/ddwrt-rflow-ntop-networkmonitoring.html</guid>
+            
+            <category>linux</category>
+            
+            <category>network</category>
+            
+            <category>monitoring</category>
+            
+            <category>dd-wrt</category>
+            
+            <category>sysadmin</category>
+            
+        </item>
+        
+        <item>
+            <title>Load balancing insert and update requests to a http api using spring-integration</title>
+            
+            <content type='html'>&lt;h1 id=&quot;load-balancing-insert-and-update-requests-to-a-http-api-using-spring-integration&quot;&gt;Load balancing insert and update requests to a http api using spring-integration&lt;/h1&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;We will use a message queue to achieve asynchronous processing of insert and update requests to a webapi.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-is-it-important&quot;&gt;Why is it important&lt;/h3&gt;
+
+&lt;p&gt;Imagine what happens in your application if suddenly a lot of requests start coming in, which demand synchronous transaction execution against a database. The webserver will start to spawn more threads. Each of these threads has to acquire a database connection. This will not only drain your http-threadpool, but also your applications connection pool. after a while, most threads will be waiting for a database connection. which in turn leads to the webserver spawning more and more threads. eventually your application becomes unresponsive.&lt;/p&gt;
+
+&lt;p&gt;So http-threads are a resource you do not want to hog. this is even more important if your application is accessible on the public internet.&lt;/p&gt;
+
+&lt;p&gt;it is also a good thing to decouple your backend workload from the http-request frequency. remember that every thread that executes a transaction against a database likely also occupies a db connection.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-does-it-work-the-short-version&quot;&gt;How does it work (the short version)&lt;/h3&gt;
+
+&lt;p&gt;When invoking a service-method directly from a http-request-processing thread, it will be occupied until the transaction completes. To avoid this, the request is handed off to a message queue and delivered to a service-activator endpoint.&lt;/p&gt;
+
+&lt;p&gt;this way, updates can be queued while your backend-threads and database eat them up at a steady load.&lt;/p&gt;
+
+&lt;p&gt;if guaranteed delivery is needed, the message queue can be made persistent with a message store. a http ok response is sent only if the message has been added to the queue.&lt;/p&gt;
+
+&lt;h3 id=&quot;when-not-to-use-this&quot;&gt;When (not) to use this&lt;/h3&gt;
+
+&lt;p&gt;This pattern is useful if you have to handle a large amount of non trivial create or update requests to your backend in a short amount of time. Consider it especially if you have a public facing api or a spiky usage pattern.&lt;/p&gt;
+
+&lt;p&gt;Its not applicable if the clients requires a response containing processing results. In this case consider to redesign your endpoint api to allow for “fire and forget” style requests:&lt;/p&gt;
+
+&lt;p&gt;Does your client really need to know if the backend transaction completed successfully, or is it enough to acknowledge the delivery?&lt;/p&gt;
+
+&lt;p&gt;Is it possible to pull the backend for results later?&lt;/p&gt;
+
+&lt;p&gt;Obviously, this adds another level of complexity and also some overhead to your application. So only use it, if you need it. Fortunately, if you design your service api with this pattern in mind, its easy to add the implementation later.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-example&quot;&gt;An example&lt;/h2&gt;
+
+&lt;p&gt;You have built an application which receives and processes orders from thousands of clients around the country. you even stress tested it with the expected workload of 500.000 orders a day and everything works fine.&lt;/p&gt;
+
+&lt;p&gt;###There is always a little detail missing from the spec!&lt;/p&gt;
+
+&lt;p&gt;but after it is deployed to production, complaints start coming in. apparently each order has to be sent several times until it is accepted and also the userinterface seems to become slow and unresponsive every night. So you check the logs and notice a lot of exceptions which look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;turns out there is a little detail about that specified load which you haven’t been told: all the clients start sending their orders at the same time every night!&lt;/p&gt;
+
+&lt;h3 id=&quot;the-application&quot;&gt;The Application&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-domainmodel&quot;&gt;The Domainmodel&lt;/h4&gt;
+
+&lt;p&gt;Is a really simple one (after all it is an example application!).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/resources/2014-08-18-srap-domain-classDiagram.PNG&quot; alt=&quot;domain model&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But there is a small gotcha with serious implications on the processing of orders. As you can see, the product quantity on stock is a direct property of &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;. Since the processing of an order involves the update of stock, the corresponding row in the product table has to be locked, which in turn requires the transaction isolation level to be serializable.&lt;/p&gt;
+
+&lt;p&gt;####Object Persistence&lt;/p&gt;
+
+&lt;p&gt;The domain objects are persisted using JPA and hibernate. Mysql is used as a database. Nothing special here.&lt;/p&gt;
+
+</content>
+            <pubDate>Mon, 18 Aug 2014 00:00:00 +0200</pubDate>
+            
+            <updated>Sun, 22 Nov 2015 01:00:00 +0100</updated>
+            
+            <link>http://lumue.github.io/2014/08/18/srap.html</link>
+            <guid isPermaLink="true">http://lumue.github.io/2014/08/18/srap.html</guid>
+            
+            <category>java</category>
+            
+            <category>spring-integration</category>
+            
+            <category>spring</category>
+            
+            <category>coding</category>
+            
+        </item>
+        
+    </channel>
+</rss>
