@@ -20,10 +20,12 @@ If you just want to use your g13 and dont care about how it is done, fair enough
 ## checkout and build
 
 go to [https://github.com/ecraven/g13](https://github.com/ecraven/g13), checkout their repo and follow the installation instructions.
-    
+
+    {% highlight bash %}
     git clone https://github.com/ecraven/g13.git
-    cd g13
-    make
+ cd g13
+ make
+    {% endhighlight %}
 
 ## installation
 

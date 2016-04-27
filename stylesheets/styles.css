@@ -16,6 +16,11 @@ article{
     color: #a9b7ec;
     background-color: #2b2b2b;
     font-size: 10pt;
+    margin: auto;
+    padding-top: 5pt;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
 }
 
 main.h1{
@@ -28,8 +33,11 @@ header, main,  aside, footer {
 }
 
 main{
-
     padding: 10px;
+}
+
+aside{
+    width: 3%;
 }
 
 /* We rely on source order for mobile-first approach
