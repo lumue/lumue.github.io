@@ -1,6 +1,5 @@
 .project
 .settings
-Gemfile
 Gemfile.lock
 _site
 */*.kate-swp
