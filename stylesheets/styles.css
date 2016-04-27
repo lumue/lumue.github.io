@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700,400italic);
+
+body {
+    display: flex;
+    flex-flow: row wrap;
+    font-family: Arvo;
+    color: #bbbbbb;
+    background-color: #3c3f41;
+}
+
+a{
+    color: #e8bf6a;
+}
+
+article{
+    color: #a9b7ec;
+    background-color: #2b2b2b;
+    font-size: 10pt;
+    margin: auto;
+    padding-top: 5pt;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+}
+
+main.h1{
+    color: #235c40;
+}
+
+/* We tell all items to be 100% width */
+header, main,  aside, footer {
+    flex: 1 100%;
+}
+
+main{
+    padding: 10px;
+}
+
+aside{
+    width: 3%;
+}
+
+/* We rely on source order for mobile-first approach
+ * in this case:
+ * 1. header
+ * 3. main
+ * 4. aside
+ * 5. footer
+ */
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+    /* We tell both sidebars to share a row */
+    aside { flex: 1 auto; }
+}
+
+/* Large screens */
+@media all and (min-width: 800px) {
+    /* We invert order of first sidebar and main
+     * And tell the main element to take twice as much width as the other two sidebars
+     */
+    main { flex: 4 0px; }
+    aside { order: 1; }
+    main    { order: 2; }
+    footer  { order: 4; }
+}

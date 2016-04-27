@@ -1,0 +1,390 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>Lumue.github.io by lumue</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="gosub" href="http://lumue.github.io/feed.xml">
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/prism.css">
+	<script src="/javascripts/prism.js"></script>
+</head>
+<body>
+<header>
+    <h1>
+    <a href="/index.html">gosub</a>
+</h1>
+<p>
+    a weblog about computer stuff
+</p>
+
+
+</header>
+<main>
+    <article>
+    <h1 id="hello-world-with-kodi">“Hello World!” with KODI</h1>
+
+<p>I wanted to use the last couple of days before its back to work to take a brief look into the world of xbmc (now KODI!) addon development.<br />
+This post describes how one goes about writing and running the obligatory “hello world!” program with KODI.<br />
+The addon language of choice in KODI world is python, and it brings its own interpreter. I will use pycharm as an IDE.</p>
+
+<p><img src="/assets/kodi-hello-world-at-runtime.png" alt="KODI says &quot;hello world!&quot;" /></p>
+
+<h2 id="what-you-need">What you need</h2>
+
+<ul>
+  <li>
+    <p><a href="http://kodi.tv">KODI</a> - A media center software which will act as the addons host. howto install KODI in your linux distro of choice is described <a href="http://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux">here</a>.</p>
+  </li>
+  <li>
+    <p>A Texteditor or IDE. Popular ones for Python are <a href="https://www.jetbrains.com/pycharm/">Pycharm</a>, Jetbrains take at a Python IDE, or the Eclipse based <a href="http://pydev.org/">PyDev</a>.</p>
+  </li>
+  <li>
+    <p><a href="http://kodi.wiki">xbmcstubs</a> - a set of python files which provide method stubs for the libraries included in KODI’s python interpreter.</p>
+  </li>
+</ul>
+
+<h2 id="other-useful-resources">Other useful resources</h2>
+
+<ul>
+  <li>
+    <p><a href="http://kodi.wiki/view/HOW-TO:HelloWorld_addon">HOW-TO:HelloWorld addon</a> on <a href="http://kodi.wiki">KODI wiki</a>.</p>
+  </li>
+  <li>
+    <p><a href="http://kodi.wiki/view/Audio/video_add-on_tutorial#Hello.2C_World.21">Audio/video add-on tutorial</a> on KODI wiki.</p>
+  </li>
+</ul>
+
+<h2 id="how-to-do-it">How to do it</h2>
+
+<h3 id="project-structure">Project structure</h3>
+
+<p>The addon directory must have the same name as the addon itself, which will be named <code class="highlighter-rouge">io.github.lumue.xbmc.hello</code>.<br />
+to be available to KODI it must be placed in <code class="highlighter-rouge">$HOME/.kodi/addons</code> and  contain at least these two files:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">addon.xml</code> addon metadata</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">addon.py</code> the addon python script</p>
+  </li>
+</ul>
+
+<p><img src="/assets/kodi-hello-world-project-structure.png" alt="the addon directory layout shown in pycharm" /></p>
+
+<h4 id="addonxml">addon.xml</h4>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;addon</span> <span class="na">id=</span><span class="s">"io.github.lumue.xbmc.hello"</span> <span class="na">name=</span><span class="s">"Hello World"</span> <span class="na">version=</span><span class="s">"1.0.0"</span> <span class="na">provider-name=</span><span class="s">"lumue"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;requires&gt;</span>
+    <span class="nt">&lt;import</span> <span class="na">addon=</span><span class="s">"xbmc.python"</span> <span class="na">version=</span><span class="s">"2.14.0"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/requires&gt;</span>
+  <span class="nt">&lt;extension</span> <span class="na">point=</span><span class="s">"xbmc.python.pluginsource"</span> <span class="na">library=</span><span class="s">"addon.py"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;provides&gt;</span>executable<span class="nt">&lt;/provides&gt;</span>
+  <span class="nt">&lt;/extension&gt;</span>
+  <span class="nt">&lt;extension</span> <span class="na">point=</span><span class="s">"xbmc.addon.metadata"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;summary</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Hello World<span class="nt">&lt;/summary&gt;</span>
+    <span class="nt">&lt;description</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>a "Hello World" addon<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;disclaimer</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;&lt;/disclaimer&gt;</span>
+    <span class="nt">&lt;language&gt;&lt;/language&gt;</span>
+    <span class="nt">&lt;platform&gt;</span>all<span class="nt">&lt;/platform&gt;</span>
+    <span class="nt">&lt;license&gt;&lt;/license&gt;</span>
+    <span class="nt">&lt;forum&gt;&lt;/forum&gt;</span>
+    <span class="nt">&lt;website&gt;&lt;/website&gt;</span>
+    <span class="nt">&lt;email&gt;</span>mueller.lutz@gmail.com<span class="nt">&lt;/email&gt;</span>
+    <span class="nt">&lt;source&gt;&lt;/source&gt;</span>
+  <span class="nt">&lt;/extension&gt;</span>
+<span class="nt">&lt;/addon&gt;</span></code></pre></figure>
+
+<h4 id="addonpy">addon.py</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">xbmcaddon</span>
+<span class="kn">import</span> <span class="nn">xbmcgui</span>
+
+<span class="n">xbmcgui</span><span class="o">.</span><span class="n">Dialog</span><span class="p">()</span><span class="o">.</span><span class="n">ok</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">,</span><span class="s">"Hello World!"</span><span class="p">)</span></code></pre></figure>
+
+
+    <div class="post-tags">
+  Tags: 
+  
+  
+  <a href="/tags/#python">python</a>,
+  
+  <a href="/tags/#kodi">kodi</a>,
+  
+  <a href="/tags/#coding">coding</a>
+  
+</div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'lumue'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</article>
+</main>
+<aside>
+    <nav>
+        <section>
+    <h1>me elsewhere</h1>
+    <ul>
+        <li>
+            <a href="https://github.com/lumue">github/lumue</a>
+        </li>
+        <li>
+            <a href="https://twitter.com/lutzmueller" data-show-count="false" data-show-screen-name="false">@lutzmueller</a>
+            <script>
+                !function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = p + '://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+            </script>
+        </li>
+        <li>
+            <a href="http://stackoverflow.com/users/2198786/lumue?tab=profile">stackoverflow/lumue</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h1>tags</h1>
+<ul>
+    
+    <li>
+        <a href="/tag/java.html">
+            java
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/spring-integration.html">
+            spring-integration
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/spring.html">
+            spring
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/coding.html">
+            coding
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/linux.html">
+            linux
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/network.html">
+            network
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/monitoring.html">
+            monitoring
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/dd-wrt.html">
+            dd-wrt
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/sysadmin.html">
+            sysadmin
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/html.html">
+            html
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/python.html">
+            python
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/kodi.html">
+            kodi
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/docker.html">
+            docker
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/devops.html">
+            devops
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/spring-boot.html">
+            spring-boot
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/project automation.html">
+            project automation
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/svn.html">
+            svn
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/slack.html">
+            slack
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/bash.html">
+            bash
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/firebird.html">
+            firebird
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/glassfish.html">
+            glassfish
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/jee.html">
+            jee
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/gaming.html">
+            gaming
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/debian.html">
+            debian
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/systemd.html">
+            systemd
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/g13.html">
+            g13
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/blogging.html">
+            blogging
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/seo.html">
+            seo
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/osmc.html">
+            osmc
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/raspberry pi.html">
+            raspberry pi
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/gogs.html">
+            gogs
+        </a>
+    </li>
+    
+    <li>
+        <a href="/tag/git.html">
+            git
+        </a>
+    </li>
+    
+</ul>
+</section>
+<section>
+    <a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/gosub" rel="alternate" type="application/rss+xml">RSS</a>
+</section>
+    </nav>
+</aside>
+<footer>
+    <p>
+    <small>
+        Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+    </small>
+</p>
+
+</footer>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69535101-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>
